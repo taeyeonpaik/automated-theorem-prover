@@ -1,5 +1,5 @@
 OCAMLOPT ?= ocamlopt
-MODULES = src/syntax.ml src/parser.ml
+MODULES = src/syntax.ml src/parser.ml src/clausify.ml
 .PHONY: all test clean run
 all: bin/milestone_tests
 bin/milestone_tests: $(MODULES) tests/milestone_tests.ml
