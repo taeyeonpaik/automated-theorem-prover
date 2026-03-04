@@ -1,0 +1,20 @@
+@@ -26,9 +26,10 @@
+     | _ -> raise Unify in
+-  let rec search s = function
++  let rec search s targets = function
+     | [] -> true
+-    | (b,(p,ts))::rest -> List.exists (fun (e,(q,us)) ->
++    | (b,(p,ts))::rest -> List.exists (fun (j,(e,(q,us))) ->
+         check ();
+         if b<>e || p<>q || List.length ts<>List.length us then false else
+-        try search (List.fold_left2 term_match s ts us) rest with Unify -> false) d in
+-  search [] c
++        try search (List.fold_left2 term_match s ts us) (without j targets) rest with Unify -> false)
++        (List.mapi (fun j t -> j,t) targets) in
++  List.length c <= List.length d && search [] d c
+ 
+@@ -82,3 +83,3 @@
+       normalize(without j c) in
+-    if Hashtbl.mem checked n.id || expected<>n.clause then raise Unify;
++    if Hashtbl.mem checked n.id || canonical expected<>n.clause then raise Unify;
+     Hashtbl.add checked n.id n in

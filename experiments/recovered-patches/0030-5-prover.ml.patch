@@ -1,0 +1,5 @@
+@@ -17,3 +17,3 @@
+     check (); stats.generated <- stats.generated+1;
+-    let clause=normalize clause in
++    let clause=canonical clause in
+     let duplicate=Hashtbl.mem seen (canonical clause) in

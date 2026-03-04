@@ -25,7 +25,7 @@ let prepare ~check premises goal =
     | Not p -> Not(skolem env universals p)
     | And(p,q) -> let a=skolem env universals p in let b=skolem env universals q in And(a,b)
     | Or(p,q) -> let a=skolem env universals p in let b=skolem env universals q in Or(a,b)
-    | Forall(x,p) -> let v=Var(fresh "V") in skolem ((x,v)::env) (universals@[v]) p
+    | Forall(x,p) -> let v=Var(fresh "#v") in skolem ((x,v)::env) (universals@[v]) p
     | Exists(x,p) ->
       let rec name () = let s=fresh "sk" in if Hashtbl.mem symbols s then name () else s in
       let s=name () in Hashtbl.add symbols s (List.length universals);
