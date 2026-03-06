@@ -1,6 +1,6 @@
 open Syntax
+open Inference
 let () =
- let cs=Clausify.prepare ~check:(fun () -> ()) ["p",Parser.parse "forall V1. p(V1)"] (Parser.parse "p(a)") in
- assert(List.length cs=2);
- assert(Parser.parse "forall x. p(x) -> q(x)" = Forall("x",Imp(Atom("p",[Var "x"]),Atom("q",[Var "x"]))));
- print_endline "Scope and freshness checks passed."
+ assert(try ignore(unify [Var "x",Fn("f",[Var "x"])]);false with Unify -> true);
+ let s=unify [Var "x",Fn("a",[])] in assert(apply s (Var "x")=Fn("a",[]));
+ print_endline "Unification checks passed."
