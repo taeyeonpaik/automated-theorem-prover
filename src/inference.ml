@@ -59,3 +59,30 @@ let factor ~check a emit =
       emit (normalize(instantiate s (without j a.clause))) (Factor(a.id,i,j,s))
     with Unify -> ()) a.clause) a.clause
 
+(* Replay recorded substitutions without calling the search or unifier.
+   Parsing, clausification and the equality axioms remain trusted. *)
+let verify inputs proof =
+  let checked=Hashtbl.create 32 in
+  let get id = (Hashtbl.find checked id).clause in
+  let valid_subst s =
+    List.length (uniq(List.map fst s))=List.length s &&
+    let domain=List.map fst s in List.for_all (fun (_,t) -> not(List.exists (fun x -> List.mem x domain) (vars t))) s in
+  let step n =
+    let expected = match n.rule with
+    | Input label -> List.assoc label inputs
+    | Resolve(a,b,i,j,s) ->
+      if not(valid_subst s) then raise Unify;
+      let left=instantiate s (rename "l:" (get a)) and right=instantiate s (rename "r:" (get b)) in
+      let x,at=List.nth left i and y,bt=List.nth right j in
+      if x=y || at<>bt then raise Unify;
+      normalize(without i left @ without j right)
+    | Factor(a,i,j,s) ->
+      if not(valid_subst s) || i=j then raise Unify;
+      let c=instantiate s (get a) in
+      if List.nth c i <> List.nth c j then raise Unify;
+      normalize(without j c) in
+    if Hashtbl.mem checked n.id || canonical expected<>n.clause then raise Unify;
+    Hashtbl.add checked n.id n in
+  try List.iter step proof;
+    match List.rev proof with last::_ -> last.clause=[] | [] -> false
+  with Unify | Not_found | Failure _ | Invalid_argument _ -> false

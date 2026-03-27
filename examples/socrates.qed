@@ -1,0 +1,5 @@
+# One premise per line; --- separates premises from the goal.
+forall x. human(x) -> mortal(x)
+human(socrates)
+---
+mortal(socrates)
