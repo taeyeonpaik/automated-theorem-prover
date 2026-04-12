@@ -1,0 +1,5 @@
+@@ -62,3 +62,3 @@
+         else [false,(name,xs);true,(name,ys)] in
+-      ("equality:congruence:" ^ name,normalize(guards@tail))::acc) table [] |> List.sort compare in
++      ("equality:" ^ (if is_function then "function:" else "predicate:") ^ name,normalize(guards@tail))::acc) table [] |> List.sort compare in
+   ["equality:reflexivity",[eq x x]; "equality:symmetry",normalize[neq x y;eq y x];

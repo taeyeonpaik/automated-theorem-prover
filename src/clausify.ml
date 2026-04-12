@@ -45,3 +45,22 @@ let prepare ~check premises goal =
     let p=nnf true p in let p=skolem [] [] p in
     List.mapi (fun i c -> Printf.sprintf "%s:%d" label (i+1),normalize c) (cnf p)) formulas
 
+let equality_axioms clauses =
+  let atoms=List.concat_map snd clauses in
+  if not (List.exists (fun (_, (p,_)) -> p="=") atoms) then [] else
+  let fs=Hashtbl.create 16 and ps=Hashtbl.create 16 in
+  let rec collect = function Var _ -> () | Fn(f,ts) -> Hashtbl.replace fs f (List.length ts); List.iter collect ts in
+  List.iter (fun (_, (p,ts)) -> Hashtbl.replace ps p (List.length ts); List.iter collect ts) atoms;
+  let x=Var "X" and y=Var "Y" and z=Var "Z" in
+  let eq a b = true,("=",[a;b]) and neq a b = false,("=",[a;b]) in
+  let congruences table is_function =
+    Hashtbl.fold (fun name n acc -> if n=0 || name="=" then acc else
+      let xs=List.init n (fun i -> Var("X"^string_of_int i))
+      and ys=List.init n (fun i -> Var("Y"^string_of_int i)) in
+      let guards=List.map2 neq xs ys in
+      let tail=if is_function then [eq (Fn(name,xs)) (Fn(name,ys))]
+        else [false,(name,xs);true,(name,ys)] in
+      ("equality:" ^ (if is_function then "function:" else "predicate:") ^ name,normalize(guards@tail))::acc) table [] |> List.sort compare in
+  ["equality:reflexivity",[eq x x]; "equality:symmetry",normalize[neq x y;eq y x];
+   "equality:transitivity",normalize[neq x y;neq y z;eq x z]]
+  @ congruences fs true @ congruences ps false

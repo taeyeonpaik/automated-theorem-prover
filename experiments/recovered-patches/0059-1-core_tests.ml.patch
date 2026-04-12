@@ -1,0 +1,9 @@
+@@ -40,2 +40,3 @@
+     "function congruence",["a = b"],"f(a) = f(b)","proved";
++    "separate symbol namespaces",["a = b";"f(a)";"f(a) = c"],"f(b)","proved";
+     "symmetry",["a = b"],"b = a","proved";
+@@ -52,3 +53,3 @@
+     let r=solve ~optimized ps g in
+-    let bounded_equality = not optimized && List.mem name ["equality substitution";"function congruence";"transitivity"] in
++    let bounded_equality = not optimized && List.mem name ["equality substitution";"function congruence";"transitivity";"separate symbol namespaces"] in
+     test (name ^ (if optimized then " optimized" else " baseline") ^ " got " ^ r.status)

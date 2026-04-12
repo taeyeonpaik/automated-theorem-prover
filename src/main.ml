@@ -54,7 +54,6 @@ let () =
     if !check_input then (
       ignore(validate(goal :: List.map snd premises));
       print_endline(obj["status",str "valid"]); exit 0);
-    if Hashtbl.mem (snd(validate(goal :: List.map snd premises))) "=" then failwith "Equality is introduced in the next milestone";
     let r=prove ~optimized:(not !baseline) ~seconds:!seconds ~max_clauses:!cap premises goal in
     print_endline(output (if !baseline then "baseline" else "optimized") r)
   with
