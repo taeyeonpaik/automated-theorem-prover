@@ -18,7 +18,7 @@ let prove ~optimized ~seconds ~max_clauses premises goal =
     check (); stats.generated <- stats.generated+1;
     let clause=canonical clause in
     let duplicate=Hashtbl.mem seen (canonical clause) in
-    let redundant=tautology clause || duplicate || (false && clause<>[] &&
+    let redundant=tautology clause || duplicate || (optimized && clause<>[] &&
       List.exists (fun n -> subsumes ~check n.clause clause) (!active @ !passive)) in
     if redundant then stats.redundant <- stats.redundant+1 else (
       if stats.kept >= max_clauses then raise (Limit "Clause limit");
@@ -51,10 +51,10 @@ let prove ~optimized ~seconds ~max_clauses premises goal =
       List.iter (fun lit -> let k=key lit in let old=Option.value (Hashtbl.find_opt index k) ~default:[] in
         Hashtbl.replace index k (given::old)) given.clause;
       factor ~check given add;
-      let candidates=if true then !active else
+      let candidates=if not optimized then !active else
         List.concat_map (fun (b,a) -> Option.value (Hashtbl.find_opt index (key(not b,a))) ~default:[]) given.clause
         |> List.sort_uniq (fun a b -> compare a.id b.id) in
-      List.iter (fun other -> resolve ~check ~indexed:false ~count:(fun () -> stats.pairs <- stats.pairs+1) given other add) candidates
+      List.iter (fun other -> resolve ~check ~indexed:optimized ~count:(fun () -> stats.pairs <- stats.pairs+1) given other add) candidates
     done;
     "not_entailed","Complete saturation: the premises and negated goal are satisfiable",[]
   with Found id -> "proved","Derived the empty clause",extract id
