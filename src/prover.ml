@@ -43,7 +43,7 @@ let prove ~optimized ~seconds ~max_clauses premises goal =
       check ();
       (* Every fifth selection is oldest-first: small clauses cannot starve
          larger ones. The baseline is FIFO throughout. *)
-      let rank n = 0,n.id in
+      let rank n = if optimized && stats.selected mod 5 <> 0 then weight n.clause,n.id else 0,n.id in
       let given=List.fold_left (fun a b -> if rank a <= rank b then a else b) (List.hd !passive) (List.tl !passive) in
       passive := List.filter (fun n -> n.id<>given.id) !passive;
       stats.selected <- stats.selected+1;

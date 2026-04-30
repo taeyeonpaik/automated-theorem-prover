@@ -1,0 +1,5 @@
+@@ -27,3 +27,3 @@
+     "metrics",obj ["elapsed_ms",Printf.sprintf "%.4f" (r.seconds*.1000.);
+-      "ocaml_peak_heap_bytes",num r.heap_bytes;"input_clauses",num r.input_clauses;
++      "ocaml_allocated_bytes",Printf.sprintf "%.0f" r.allocated_bytes;"input_clauses",num r.input_clauses;
+       "generated_clauses",num s.generated;"kept_clauses",num s.kept;

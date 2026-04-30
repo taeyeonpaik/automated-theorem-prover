@@ -1,0 +1,15 @@
+@@ -6,3 +6,3 @@
+ type result = {status:string; reason:string; proof:node list; checked:bool;
+-  stats:stats; seconds:float; heap_bytes:int; input_clauses:int}
++  stats:stats; seconds:float; allocated_bytes:float; input_clauses:int}
+ exception Found of int
+@@ -11,2 +11,3 @@
+   let started=Unix.gettimeofday () in
++  let allocated_start=Gc.allocated_bytes () in
+   let check () = if Unix.gettimeofday () -. started > seconds then raise (Limit "Time limit") in
+@@ -62,4 +63,3 @@
+   if status="proved" && not checked then failwith "Internal error: proof replay failed";
+-  let gc=Gc.quick_stat () in
+   {status;reason;proof;checked;stats;seconds=Unix.gettimeofday () -. started;
+-   heap_bytes=gc.top_heap_words * (Sys.word_size/8);input_clauses=List.length !initial}
++   allocated_bytes=Gc.allocated_bytes () -. allocated_start;input_clauses=List.length !initial}
