@@ -10,5 +10,7 @@ bin/core_tests: $(MODULES) tests/core_tests.ml
 	$(OCAMLOPT) -I src -I +unix unix.cmxa $(MODULES) tests/core_tests.ml -o $@
 test: all bin/core_tests
 	./bin/core_tests
+run: all
+	python3 server.py
 clean:
 	rm -f src/*.cm[iox] src/*.o tests/*.cm[iox] tests/*.o bin/qed bin/core_tests bin/milestone_tests
