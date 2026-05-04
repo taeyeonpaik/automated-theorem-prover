@@ -1,0 +1,5 @@
+@@ -64,3 +64,3 @@
+   section.append(table(["Measure", "Value"], [
+-    ["Prover time", m.elapsed_ms === undefined ? "Unavailable (hard limit)" : `${m.elapsed_ms.toFixed(3)} ms`],
++    ["Prover time", m.elapsed_ms === undefined ? "Unavailable" : `${m.elapsed_ms.toFixed(3)} ms`],
+     ["Peak prover process memory", `${(m.peak_rss_bytes / 1048576).toFixed(2)} MiB`],

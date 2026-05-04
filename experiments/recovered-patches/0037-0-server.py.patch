@@ -1,0 +1,5 @@
+@@ -14,3 +14,3 @@
+ # Browsers need a document bootstrap; the entire interface is authored in JS.
+-SHELL = b'<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QED</title><script src="/app.js" defer></script>'
++SHELL = b'<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QED</title><script src="/app.js" type="module"></script>'
+ 
