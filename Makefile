@@ -10,6 +10,7 @@ bin/core_tests: $(MODULES) tests/core_tests.ml
 	$(OCAMLOPT) -I src -I +unix unix.cmxa $(MODULES) tests/core_tests.ml -o $@
 test: all bin/core_tests
 	./bin/core_tests
+	python3 -m unittest discover -s tests -v
 run: all
 	python3 server.py
 clean:
