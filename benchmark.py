@@ -10,6 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import client
+import tptp
 
 ROOT = Path(__file__).resolve().parent
 
@@ -36,7 +37,6 @@ def main():
         parser.error("--repeat must be positive")
     unsupported, hashes = [], {}
     if args.tptp:
-        raise ValueError("TPTP import is introduced in the next milestone")
         problems = []
         files = sorted(args.tptp.rglob("*.p"))
         if not files:

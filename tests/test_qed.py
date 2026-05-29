@@ -8,6 +8,7 @@ from pathlib import Path
 
 import client
 import storage
+import tptp
 
 
 def direct(premises, goal, baseline=False):
@@ -97,8 +98,24 @@ class BoundaryTests(unittest.TestCase):
                 "distinct_proved_problems": 1, "distinct_premise_texts": 1})
             self.assertEqual(history["runs"][0]["result"], result)
 
+    def test_tptp_fof(self):
+        problem = tptp.parse("""% Status : Theorem
+            fof(rule,axiom, ! [X] : (p(X) => q(X))).
+            fof(fact,axiom,p(a)). fof(goal,conjecture,q(a)).""")
+        self.assertEqual(problem["expected_tptp_status"], "Theorem")
+        self.assertTrue(client.run(problem)["proof_checked"])
 
+    def test_tptp_cnf(self):
+        problem = tptp.parse("cnf(a,axiom,p(X) | q(X)). cnf(b,negated_conjecture,~p(a)). cnf(c,axiom,~q(a)).")
+        self.assertEqual(problem["goal"], "false")
+        self.assertTrue(client.run(problem)["proof_checked"])
 
+    def test_tptp_unsupported_is_explicit(self):
+        for text in ["include('Axioms/a.ax').", "tff(a,type,p:$o).", 'fof(a,axiom,$distinct(a,b)).',
+                     "fof(a,unknown,p).", "fof(a,axiom,p)",
+                     "fof(a,conjecture,p). fof(b,conjecture,q)."]:
+            with self.subTest(text=text), self.assertRaises(tptp.Unsupported):
+                tptp.parse(text)
 
 
 if __name__ == "__main__":
