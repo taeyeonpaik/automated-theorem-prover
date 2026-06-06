@@ -1,0 +1,17 @@
+@@ -125,3 +125,3 @@
+ 
+-def load(path, root=None):
++def load(path, root=None, max_source_bytes=None):
+     path = Path(path).resolve()
+@@ -129,3 +129,5 @@
+     sources, visiting = {}, set()
++    source_bytes = 0
+     def read(current):
++        nonlocal source_bytes
+         current = current.resolve()
+@@ -135,2 +137,5 @@
+             raise Unsupported("Cyclic or excessively nested include")
++        source_bytes += current.stat().st_size
++        if max_source_bytes is not None and source_bytes > max_source_bytes:
++            raise Unsupported("Source expansion exceeds benchmark byte budget")
+         content = current.read_bytes()
