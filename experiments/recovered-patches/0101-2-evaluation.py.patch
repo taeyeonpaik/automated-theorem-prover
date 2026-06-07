@@ -1,0 +1,9 @@
+@@ -105,2 +105,3 @@
+     lines = [f"# {report['corpus']}", "", f"Recorded: {report['created_utc']}", "",
++             "Status: " + ("complete" if report["complete"] else "partial / in progress"), "",
+              f"{report['total_problems']} selected problems; {report['accepted_problems']} accepted; "
+@@ -116,3 +117,3 @@
+               "Satisfiable cases count as correct decisions, not constructed proofs. Proof checks cover resolution/factoring, not preprocessing.", "",
+-              "This is a small, deliberately selected historical TPTP subset, not a representative sample of the current library or a competition result.", "",
++              "This is a small, deliberately selected suite, not a representative sample of the current TPTP library or a competition result.", "",
+               "## Per-problem results", "", "| Problem | Library status | Baseline | Optimized |", "|---|---|---|---|"]

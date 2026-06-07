@@ -1,0 +1,5 @@
+@@ -92,3 +92,3 @@
+             (root / "manifest.json").write_text(json.dumps({"problem_paths": ["a.p"], "files": {"a.p": ev.digest(path)}}))
+-            self.assertEqual(ev.snapshot(root)[1], [path])
++            self.assertEqual(ev.snapshot(root)[1], [path.resolve()])
+             path.write_text("fof(a,axiom,~p).")

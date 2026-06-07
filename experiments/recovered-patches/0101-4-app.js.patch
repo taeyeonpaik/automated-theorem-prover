@@ -1,0 +1,4 @@
+@@ -135,2 +135,3 @@
+       premises.value = p.premises.join("\n"); goal.value = p.goal;
++      seconds.value = String(report.limits.seconds); cap.value = String(report.limits.max_clauses);
+       description.textContent = `${p.name} · TPTP 3.3.0 · published status: ${p.expected_tptp_status}. Edit or run it above. Axiom-file includes have been expanded.`;

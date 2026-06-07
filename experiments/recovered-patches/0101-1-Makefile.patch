@@ -1,0 +1,12 @@
+@@ -3,3 +3,3 @@
+ 
+-.PHONY: all test run clean benchmark
++.PHONY: all test run clean benchmark tptp-eval
+ all: bin/qed
+@@ -24,2 +24,6 @@
+ 
++tptp-eval: bin/qed
++	python3 fetch_tptp.py
++	python3 benchmark.py --tptp --seconds 2 --repeat 3
++
+ clean:

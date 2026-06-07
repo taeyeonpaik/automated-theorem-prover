@@ -1,0 +1,5 @@
+@@ -114,3 +114,3 @@
+         for text in ["include('Axioms/a.ax').", "tff(a,type,p:$o).", 'fof(a,axiom,$distinct(a,b)).',
+-                     "fof(a,axiom,p,source(x)).", "fof(a,unknown,p).", "fof(a,axiom,p)",
++                     "fof(a,unknown,p).", "fof(a,axiom,p)",
+                      "fof(a,conjecture,p). fof(b,conjecture,q)."]:

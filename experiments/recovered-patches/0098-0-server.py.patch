@@ -1,0 +1,40 @@
+@@ -6,3 +6,3 @@
+ from pathlib import Path
+-from urllib.parse import urlparse
++from urllib.parse import urlparse, parse_qs
+ 
+@@ -10,2 +10,3 @@
+ import storage
++import tptp
+ from examples import EXAMPLES
+@@ -13,2 +14,4 @@
+ ROOT = Path(__file__).resolve().parent
++TPTP_ROOT = ROOT / "benchmarks/tptp-v3.3.0"
++TPTP_REPORT = ROOT / "benchmarks/results-tptp.json"
+ # Browsers need a document bootstrap; the entire interface is authored in JS.
+@@ -40,2 +43,25 @@
+             self.reply(storage.history(self.server.db_path))
++        elif path == "/api/evaluation":
++            if TPTP_REPORT.exists():
++                report = json.loads(TPTP_REPORT.read_text())
++                self.reply({k: report[k] for k in ("corpus", "complete", "repeat", "limits", "summary", "problems", "mismatches")})
++            else:
++                self.reply({"available": False})
++        elif path == "/api/evaluation/report" and TPTP_REPORT.exists():
++            self.reply(TPTP_REPORT.read_bytes())
++        elif path == "/api/tptp/problem":
++            requested = parse_qs(urlparse(self.path).query).get("name", [""])[0]
++            if not (TPTP_ROOT / "manifest.json").exists():
++                self.reply({"error": "Run python3 fetch_tptp.py first"}, status=404)
++                return
++            manifest = json.loads((TPTP_ROOT / "manifest.json").read_text())
++            if requested not in manifest["problem_paths"]:
++                self.reply({"error": "Unknown TPTP problem"}, status=404)
++                return
++            try:
++                problem = tptp.load(TPTP_ROOT / requested, root=TPTP_ROOT)
++                client.validate(problem)
++                self.reply(problem)
++            except (ValueError, OSError) as error:
++                self.reply({"error": str(error)}, status=400)
+         else:

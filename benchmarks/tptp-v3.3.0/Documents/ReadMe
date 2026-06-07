@@ -1,0 +1,156 @@
+TPTP-v3.3.0 ReadMe
+------------------ Thu Jun 28 16:32:09 EDT 2007.
+
+(Please read the TPTP technical report for full details about the TPTP.)
+
+Description
+-----------
+The TPTP  (Thousands  of Problems  for Theorem  Provers)  Problem Library  is a
+library of test problems for automated theorem proving (ATP) systems.  The TPTP
+supplies the ATP community with:
++ A comprehensive library of the ATP test problems that are available today, in
+  order to provide an overview and a simple, unambiguous reference mechanism.
++ A comprehensive list of references and other interesting information for each
+  problem.
++ New  generalized variants  of problems  whose original  presentation is hand-
+  tailored towards a particular automated proof.
++ Arbitary size instances of generic problems (e.g., the N-queens problem).
++ A utility to convert the problems to existing ATP systems' formats.
++ General guidelines outlining the requirements for ATP system evaluation.
+
+The principal motivation for this project is to move the testing and evaluation
+of ATP  systems from the previously  ad hoc situation onto a firm footing. This
+became necessary,  as results being published do  not always accurately reflect
+the  capabilities of  the ATP  system being  considered.  A common  library  of
+problems  is necessary  for meaningful  system evaluations,  meaningful  system
+comparisons,  repeatability  of testing,  and the  production of  statistically
+significant results. The TPTP is such a library.
+
+The TPTP  is the work  of Geoff Sutcliffe  and Christian  Suttner.  The TPTP is
+maintained and  distributed from the Department of Computer Science, University
+of Miami, USA.  The TPTP is also supported by the Institut fuer Informatik,  TU
+Muenchen, Germany.
+
+The TPTP  is regularly updated.  If you would like to  become a registered TPTP
+user  and be  kept informed  of developments,  please email Geoff Sutcliffe  at
+geoff@cs.miami.edu.
+
+Simple  instructions for  obtaining and installing  the TPTP  are given in  the
+Quick Installation Guide at the end of this ReadMe file.
+
+Files
+-----
+The  TPTP  files  are kept  in various  directories,  as described  below.  The
+directory structure  should not  be changed,  as the TPTP  software is coded to
+work in the structure as distributed.
+
+ReadMe-v3.3.0 - This file.
+TPTP-v3.3.0.tar.gz - The TPTP problem library, which expands to :
++ Axioms     - The axiom files directory.  Axiom files are  merged into problem
+               files.
++ Problems   - The problem files directory with subdirectories for each domain.
+               The  subdirectories  contain  problem  files  with  the formulae
+               specific to each problem.
++ Generators - The  generator files  directory.  Generator files  are  used  to
+               generate  instances  of  generic  problems,  according  to  user
+               supplied size parameters.
++ Documents  - A  directory containing  documents that relate to the TPTP.  The
+               files  contain comprehensive  online information about the TPTP,
+               and provide  quick access  to data that is  useful for using the
+               TPTP, using standard system tools (e.g., grep, awk).
++ TPTP2X     - The directory containing the tptp2X utility. The tptp2X utility:
+               * Converts from  the TPTP format to formats used by existing ATP
+                 systems.
+               * Applies transformations to the clauses of TPTP problems.
+               * Controls  the  generation  of  TPTP  problem  files  from TPTP
+                 generator files.
++ Scripts    - A directory containing  shell scripts that  may be used with the
+               TPTP.
+BuggedProblems-v3.3.0 - A list  of bugs in  the current TPTP  (bugs found after
+               release).
+
+Conditions of use
+-----------------
+By providing  this library  of ATP problems,  and a specification  of how these
+problems should  be presented to ATP systems,  it is our intention to place the
+testing,  evaluation,  and comparison of  ATP systems onto a firm footing.  For
+this reason,  you should  abide  by the  following conditions  when using  TPTP
+problems and presenting your results.
+1. The TPTP release number must be stated.
+2. Each problem must be referenced by its unambiguous syntactic name.
+3. No formulae may be changed,  added, or removed without explicit notice (this
+   holds also for  removing equality axioms when built-in equality  is provided
+   by the prover).
+4. The formulae may not be reordered without explicit notice.  If reordering is
+   done using the tptp2X utility, the reordering must be explicitly noted.
+5. The header  information in  each problem  may not  be used by the ATP system
+   without explicit notice.  Any information  that is given  to the ATP system,
+   other  than that  in  the  "input_formula"s  and  "input_clause"s,  must  be
+   explicitly noted.
+6. All system switches and default settings must be recorded.
+
+Please email one of us if :
+---------------------------
+1. You find any mistakes in the TPTP.
+2. You are able to provide further information for a TPTP problem.
+3. You  want  to  contribute  a  problem  to  the TPTP.  Please use the problem
+   template that comes with the distribution, and fill in header information as
+   far as possible. Any unambiguous representation will do for the formulae.
+4. You have any suggestions for improving the TPTP library.
+
+General Disclaimer
+------------------
+Every effort has been made to ensure that the TPTP problems have been correctly
+presented, and that appropriate acknowledgments have been made.  However, we do
+not guarantee that we have succeeded,  and accept  no  responsibility  for  any
+errors or omissions.  We will gratefully receive comments and  corrections.
+
+Copyright
+---------
+The TPTP is copyrighted (c) 1993-2007,  by Geoff Sutcliffe & Christian Suttner.
+Use and verbatim redistribution of the TPTP are permitted.  Distribution of any
+modified version or modified part of the TPTP requires permission.
+
+================================================================================
+
+                         TPTP Quick Installation Guide
+                         -----------------------------
+
+This explains how to obtain, install, and syntax-convert the TPTP problems. For
+more details, explanations, and further options, see the TPTP technical report.
+
+1. Obtaining the TPTP
+
+   Use the World Wide Web (WWW) with the following URL :
+      http://www.tptp.org
+
+
+2. Installing the TPTP
+
+   prompt> tar xzf TPTP-v3.3.0.tar.gz
+   prompt> cd TPTP-v3.3.0
+   prompt> ./Scripts/tptp1T_install
+           <... the script will then ask for required information>
+   prompt> ./TPTP2X/tptp2X_install
+           <... the script will then ask for required information>
+
+   If you don't have any Prolog installed, you need to get one first.
+   Both utilities can be installed in a default configuration by appending a
+   -default flag to the install command.
+
+
+3. Converting all the TPTP problems to the syntax of other ATP systems
+
+   prompt> ./TPTP2X/tptp2X -f<Format>
+
+   where  the  available  <Format>s  can  be  seen  as  the  extensions  of the 
+   TPTP2X/format.* files.
+
+   Some of the formats cannot cope with certain types of problems, e.g., dimacs
+   format  is for  only  propositional  CNF problems.  The  tptp format  simply
+   expands include directives, producing files in the TPTP Prolog-style syntax.
+   tptp2X  offers MUCH  more than  this.  See the  TPTP technical  report for a
+   detailed description of the utility, including information on how to produce
+   output in your own syntax.
+
+================================================================================
