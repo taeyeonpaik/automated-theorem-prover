@@ -9,6 +9,20 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 
 
+def source(problem):
+    return "\n".join(problem["premises"] + ["---", problem["goal"]]) + "\n"
+
+
+def check_input(problem):
+    """Use the actual OCaml grammar for benchmark preflight, without search."""
+    problem = validate(problem)
+    process = subprocess.run([str(ROOT / "bin/qed"), "--check-input"],
+                             input=source(problem), text=True, capture_output=True, timeout=5)
+    result = json.loads(process.stdout)
+    if result["status"] != "valid":
+        raise ValueError(result.get("reason", "Input validation failed"))
+
+
 def validate(problem):
     if not isinstance(problem, dict):
         raise ValueError("Expected a problem object")
@@ -53,10 +67,9 @@ def worker(problem):
                "--max-clauses", str(problem["max_clauses"])]
     if problem["mode"] == "baseline":
         command.append("--baseline")
-    source = "\n".join(problem["premises"] + ["---", problem["goal"]]) + "\n"
     start = time.perf_counter()
     try:
-        process = subprocess.run(command, input=source, text=True, capture_output=True,
+        process = subprocess.run(command, input=source(problem), text=True, capture_output=True,
                                  timeout=problem["seconds"] + 1)
         if process.stdout.strip():
             result = json.loads(process.stdout)
