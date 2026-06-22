@@ -1,3 +1,4 @@
+# Unsupported inputs stay in coverage denominators; timeouts are not disproofs.
 """Dataset integrity, correct denominators, and human-readable benchmark reports."""
 from collections import Counter
 import hashlib
