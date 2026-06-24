@@ -1,0 +1,23 @@
+@@ -119,3 +119,3 @@
+   const report = await api("/api/evaluation");
+-  evaluationSection.replaceChildren(el("h2", "TPTP evaluation"));
++  evaluationSection.replaceChildren(el("h2", "Historical TPTP regression suite (64 problems)"));
+   if (report.available === false) {
+@@ -145,3 +145,3 @@
+     document.createTextNode(" "), refresh, paragraph("Re-run the 64-problem regression suite: python3 benchmark.py --tptp --seconds 2 --repeat 3"),
+-    el("a", "Download full evaluation JSON", {href: "/api/evaluation/report", download: "qed-tptp-results.json"}));
++    el("a", "Download historical evaluation JSON", {href: "/api/evaluation/report", download: "qed-tptp-results.json"}));
+ };
+@@ -159,2 +159,12 @@
+   fullEvaluationSection.append(paragraph(`Input checks: ${Object.entries(report.preflight_states).map(([state, count]) => `${count} ${state}`).join(" · ")}`));
++  const metrics = await api("/api/full-evaluation/metrics");
++  if (metrics.available === false || !metrics.complete) {
++    fullEvaluationSection.append(paragraph("Paired runtime and literal-comparison medians will appear after the full search and sequential timing reruns finish."));
++  } else {
++    fullEvaluationSection.append(paragraph(`Paired efficiency: ${metrics.aggregate.problems} shared, verified successes; three sequential runs per mode. These medians describe this shared-success subset.`));
++    fullEvaluationSection.append(table(["Metric", "Baseline median", "Optimized median", "Reduction"],
++      Object.entries(metrics.aggregate.fields).map(([name, s]) => [name === "median_ms" ? "Prover time (ms)" : "Candidate literal comparisons",
++        s.median.baseline?.toFixed(4) ?? "—", s.median.optimized?.toFixed(4) ?? "—", s.median.reduction_percent === null ? "—" : `${s.median.reduction_percent.toFixed(2)}%`])));
++    fullEvaluationSection.append(el("a", "Download paired metrics", {href: "/api/full-evaluation/metrics", download: "qed-tptp-paired-metrics.json"}));
++  }
+   const refresh = el("button", "Refresh full evaluation", {type: "button"});

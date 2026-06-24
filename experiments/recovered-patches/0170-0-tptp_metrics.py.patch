@@ -1,0 +1,7 @@
+@@ -54,4 +54,4 @@
+         'These are shared-success timing results, not an all-library average. Very short runtimes are noisy.', '',
+-        f"Candidate shared successes: {data.get('candidate_problems',stats['problems'])}. '
+-        'Full per-problem medians and identifiers are preserved in the JSON."]
++        f"Candidate shared successes: {data.get('candidate_problems',stats['problems'])}. "
++        'Full per-problem medians and identifiers are preserved in the JSON.']
+     output.with_suffix('.md').write_text('\n'.join(lines)+'\n')

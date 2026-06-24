@@ -1,0 +1,6 @@
+@@ -58,2 +58,5 @@
+             self.reply((FULL_REPORT / "results.csv").read_bytes(), "text/csv")
++        elif path == "/api/full-evaluation/metrics":
++            metrics = FULL_REPORT / "paired-metrics.json"
++            self.reply(json.loads(metrics.read_text()) if metrics.exists() else {"available": False})
+         elif path == "/api/full-tptp/problem":

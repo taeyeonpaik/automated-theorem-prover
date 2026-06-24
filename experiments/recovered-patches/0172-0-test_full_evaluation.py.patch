@@ -1,0 +1,28 @@
+@@ -11,2 +11,3 @@
+ import tptp
++import tptp_metrics
+ 
+@@ -14,2 +15,12 @@
+ class FullEvaluationTests(unittest.TestCase):
++    def test_paired_aggregation_uses_identical_cohort(self):
++        data=[{'median_ms':{'baseline':b,'optimized':o},
++               'median_pair_checks':{'baseline':b*10,'optimized':o*10}}
++              for b,o in [(1,1),(10,2),(100,30)]]
++        result=tptp_metrics.aggregate(data)['fields']['median_ms']
++        self.assertEqual(result['median']['baseline'],10)
++        self.assertEqual(result['median']['optimized'],2)
++        self.assertEqual(result['median']['reduction_percent'],80)
++        self.assertEqual(result['median_per_problem_reduction_percent'],70)
++
+     def test_source_budget_covers_includes(self):
+@@ -61,2 +72,10 @@
+                     self.assertEqual(ev.digest(output/row['proof_artifact']),row['proof_sha256'])
++            metrics=output/'paired.json'
++            subprocess.run(['python3',str(client.ROOT/'tptp_metrics.py'),'--full',str(output),
++                '--output',str(metrics),'--repeat','2'],check=True,capture_output=True,timeout=30)
++            measured=json.loads(metrics.read_text())
++            self.assertTrue(measured['complete'])
++            self.assertEqual(measured['candidate_problems'],2)
++            self.assertEqual(measured['aggregate']['problems'],2)
++            self.assertEqual(measured['completed_runs'],8)
+             (root/cases[0][0]).write_text('fof(g,conjecture,q).')

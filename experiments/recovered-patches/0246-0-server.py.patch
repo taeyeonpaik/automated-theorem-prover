@@ -1,0 +1,18 @@
+@@ -17,3 +17,4 @@
+ TPTP_REPORT = ROOT / "benchmarks/results-tptp.json"
+-FULL_REPORT = ROOT / "benchmarks/full-tptp-9.3.1"
++FULL_REPORT = ROOT / "benchmarks/full-tptp-9.3.1-v2"
++V1_REPORT = ROOT / "benchmarks/full-tptp-9.3.1"
+ # Browsers need a document bootstrap; the entire interface is authored in JS.
+@@ -55,3 +56,10 @@
+             summary = FULL_REPORT / "summary.json"
+-            self.reply(json.loads(summary.read_text()) if summary.exists() else {"available": False})
++            report = json.loads(summary.read_text()) if summary.exists() else {"available": False}
++            pipeline = FULL_REPORT / "pipeline-status.json"
++            report["pipeline"] = json.loads(pipeline.read_text()) if pipeline.exists() else None
++            self.reply(report)
++        elif path == "/api/full-evaluation/v1" and (V1_REPORT / "summary.json").exists():
++            self.reply((V1_REPORT / "summary.json").read_bytes())
++        elif path == "/api/full-evaluation/v1-metrics" and (V1_REPORT / "paired-metrics.json").exists():
++            self.reply((V1_REPORT / "paired-metrics.json").read_bytes())
+         elif path == "/api/full-evaluation/results.csv" and (FULL_REPORT / "results.csv").exists():
