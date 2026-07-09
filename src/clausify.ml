@@ -2,9 +2,9 @@ open Syntax
 
 (* Refutation pipeline: NNF, fresh bound variables, Skolemization, CNF.
    Skolemization preserves satisfiability, not logical equivalence. *)
-let prepare ~check premises goal =
+let prepare ?(definitional=false) ~check premises goal =
   let formulas = List.map (fun (name,p) -> name,close p) premises @ ["negated_goal",Not(close goal)] in
-  let symbols,_ = validate (List.map snd formulas) in
+  let symbols,predicates = validate (List.map snd formulas) in
   let serial = ref 0 in
   let fresh prefix = incr serial; prefix ^ string_of_int !serial in
   let rec nnf polarity f =
@@ -41,9 +41,49 @@ let prepare ~check premises goal =
       bounded (List.concat_map (fun c -> List.map (fun d -> check (); normalize(c@d)) b) a)
     | _ -> assert false
   and bounded cs = check (); if List.length cs > 10000 then raise (Limit "CNF expansion limit"); cs in
+  (* Fresh predicates carry every free variable of their subformula. Using
+     propositional constants here would be unsound for first-order formulas. *)
+  let defcnf formula =
+    let clauses=ref [] and definitions=Hashtbl.create 32 in
+    let emit c = check (); clauses := normalize c :: !clauses;
+      if List.length !clauses > 10000 then raise (Limit "CNF expansion limit") in
+    let neg (b,a) = not b,a in
+    let rec literal = function
+      | Atom a -> true,a | Not(Atom a) -> false,a
+      | f -> match Hashtbl.find_opt definitions f with
+        | Some lit -> lit
+        | None ->
+          let rec name () = let n=fresh "qed_def" in
+            if Hashtbl.mem predicates n then name () else n in
+          let n=name () and vs=free f in
+          Hashtbl.add predicates n (List.length vs);
+          let d=true,(n,List.map (fun x -> Var x) vs) in
+          Hashtbl.add definitions f d;
+          (match f with
+           | True -> emit [d] | False -> emit [neg d]
+           | And(p,q) -> let a=literal p and b=literal q in
+               emit [neg d;a]; emit [neg d;b]; emit [d;neg a;neg b]
+           | Or(p,q) -> let a=literal p and b=literal q in
+               emit [neg d;a;b]; emit [d;neg a]; emit [d;neg b]
+           | _ -> assert false); d in
+    (* Preserve formulas already in clausal form; introduce definitions only
+       below disjunctions, where distribution would otherwise duplicate work. *)
+    let rec disj = function Or(p,q) -> disj p @ disj q | f -> [literal f] in
+    let rec top = function
+      | True -> () | False -> emit []
+      | And(p,q) -> top p; top q
+      | f -> emit(disj f) in
+    top formula; List.rev !clauses in
+  (* Tiny formulas are cheaper without auxiliary predicates. Count only up
+     to the threshold; do not build the distributive product to estimate it. *)
+  let rec estimate = function
+    | True -> 0 | And(p,q) -> check (); min 33 (estimate p + estimate q)
+    | Or(p,q) -> check (); min 33 (estimate p * estimate q)
+    | _ -> 1 in
+  let convert p = if definitional && estimate p > 32 then defcnf p else cnf p in
   List.concat_map (fun (label,p) ->
     let p=nnf true p in let p=skolem [] [] p in
-    List.mapi (fun i c -> Printf.sprintf "%s:%d" label (i+1),normalize c) (cnf p)) formulas
+    List.mapi (fun i c -> Printf.sprintf "%s:%d" label (i+1),normalize c) (convert p)) formulas
 
 let equality_axioms clauses =
   let atoms=List.concat_map snd clauses in

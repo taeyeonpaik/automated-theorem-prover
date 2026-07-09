@@ -36,7 +36,7 @@ let prove ~optimized ~seconds ~max_clauses premises goal =
       let n=Hashtbl.find nodes id in Hashtbl.add visited id n; List.iter walk (parents n.rule)) in
     walk id; Hashtbl.fold (fun _ n acc -> n::acc) visited [] |> List.sort (fun a b -> compare a.id b.id) in
   let status,reason,proof = try
-    initial := Clausify.prepare ~check premises goal;
+    initial := Clausify.prepare ~definitional:optimized ~check premises goal;
     initial := !initial @ Clausify.equality_axioms !initial;
     List.iter (fun (name,c) -> add c (Input name)) !initial;
     while !passive<>[] do
