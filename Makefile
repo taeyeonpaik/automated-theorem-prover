@@ -1,5 +1,5 @@
 OCAMLOPT ?= ocamlopt
-MODULES = src/syntax.ml src/parser.ml src/clausify.ml src/inference.ml src/prover.ml
+MODULES = src/syntax.ml src/parser.ml src/clausify.ml src/equality.ml src/inference.ml src/clause_index.ml src/prover.ml
 .PHONY: all test clean run
 all: bin/qed
 bin/qed: $(MODULES) src/main.ml
