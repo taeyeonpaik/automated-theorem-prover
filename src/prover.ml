@@ -67,7 +67,7 @@ let legacy ~optimized ~seconds ~max_clauses premises goal =
 
 (* Switches support controlled ablations without changing the old baseline. *)
 type features = {simplify:bool; indexing:bool; definitions:bool; equality:bool}
-let all_features = {simplify=true;indexing=false;definitions=true;equality=false}
+let all_features = {simplify=true;indexing=true;definitions=true;equality=false}
 
 let improved features ~seconds ~max_clauses premises goal =
   let started=Unix.gettimeofday () and allocated_start=Gc.allocated_bytes () in
