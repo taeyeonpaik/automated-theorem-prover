@@ -4,8 +4,17 @@ open Syntax
 
 (* Lexicographic path ordering, following Harrison's order.ml. Unlike a raw
    size comparison this ordering is stable under substitution and context. *)
-(* Rewriting is disabled until the ordering milestone. *)
-let greater _ _ = false
+let rec greater s t =
+  match s,t with
+  | _,Var x -> s<>t && List.mem x (vars s)
+  | Fn(f,ss),Fn(g,ts) ->
+      List.exists (fun u -> u=t || greater u t) ss ||
+      (List.for_all (greater s) ts &&
+       (if f=g then lex ss ts else compare (f,List.length ss) (g,List.length ts)>0))
+  | _ -> false
+and lex ss ts = match ss,ts with
+  | s::ss,t::ts -> if s=t then lex ss ts else greater s t
+  | _ -> false
 
 let rec positions t = match t with
   | Var _ -> []
