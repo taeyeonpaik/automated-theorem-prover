@@ -1,0 +1,22 @@
+"""Small editable demonstrations, not a TPTP benchmark collection."""
+EXAMPLES = [
+    {"name": "Socrates", "description": "Use a general rule and a fact to prove a conclusion.",
+     "premises": ["forall x. human(x) -> mortal(x)", "human(socrates)"], "goal": "mortal(socrates)"},
+    {"name": "Spatial transitivity", "description": "The ostrich-and-elephant example from the supplied videos.",
+     "premises": ["forall x y z. (left(x,y) & left(y,z)) -> left(x,z)",
+                  "left(ostrich1,elephant)", "left(elephant,ostrich2)"], "goal": "left(ostrich1,ostrich2)"},
+    {"name": "An existential witness", "description": "Something is a scientist; therefore something is curious.",
+     "premises": ["exists x. scientist(x)", "forall x. scientist(x) -> curious(x)"], "goal": "exists x. curious(x)"},
+    {"name": "Equality", "description": "Equal objects can replace each other in a predicate.",
+     "premises": ["alice = author", "writes(alice,book)"], "goal": "writes(author,book)"},
+    {"name": "Functions", "description": "Apply a rule repeatedly to structured terms.",
+     "premises": ["number(zero)", "forall x. number(x) -> number(succ(x))"], "goal": "number(succ(succ(zero)))"},
+    {"name": "Factoring", "description": "This contradiction needs factoring as well as binary resolution.",
+     "premises": ["forall x y. p(x) | p(y)", "forall x y. ~p(x) | ~p(y)"], "goal": "false"},
+    {"name": "A conclusion that does not follow", "description": "Knowing the consequence does not establish the premise.",
+     "premises": ["raining -> wet", "wet"], "goal": "raining"},
+    {"name": "Independent witnesses", "description": "Two existential statements need not describe the same object.",
+     "premises": ["exists x. sings(x)", "exists x. dances(x)"], "goal": "exists x. sings(x) & dances(x)"},
+    {"name": "Search limit", "description": "An expanding function chain can exhaust the search budget. Try 1 second.",
+     "premises": ["p(a)", "forall x. p(x) -> p(f(x))"], "goal": "q(a)"},
+]
