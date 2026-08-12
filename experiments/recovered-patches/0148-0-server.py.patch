@@ -1,0 +1,34 @@
+@@ -4,2 +4,3 @@
+ import subprocess
++import sqlite3
+ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+@@ -16,2 +17,3 @@
+ TPTP_REPORT = ROOT / "benchmarks/results-tptp.json"
++FULL_REPORT = ROOT / "benchmarks/full-tptp-9.3.1"
+ # Browsers need a document bootstrap; the entire interface is authored in JS.
+@@ -51,2 +53,25 @@
+             self.reply(TPTP_REPORT.read_bytes())
++        elif path == "/api/full-evaluation":
++            summary = FULL_REPORT / "summary.json"
++            self.reply(json.loads(summary.read_text()) if summary.exists() else {"available": False})
++        elif path == "/api/full-evaluation/results.csv" and (FULL_REPORT / "results.csv").exists():
++            self.reply((FULL_REPORT / "results.csv").read_bytes(), "text/csv")
++        elif path == "/api/full-tptp/problem":
++            requested = parse_qs(urlparse(self.path).query).get("name", [""])[0]
++            if "/" not in requested:
++                requested = f"Problems/{requested[:3]}/{requested}"
++                if not requested.endswith(".p"):
++                    requested += ".p"
++            database = FULL_REPORT / "results.sqlite3"
++            if not database.exists():
++                self.reply({"error": "Full evaluation has not started"}, status=404)
++                return
++            with sqlite3.connect(database.as_uri() + "?mode=ro", uri=True) as db:
++                row = db.execute("SELECT descriptor,input FROM problems WHERE name=?", (requested,)).fetchone()
++            if row is None:
++                self.reply({"error": "Unknown problem, or preflight has not reached it yet"}, status=404)
++            elif json.loads(row[0])["state"] != "accepted":
++                self.reply({"error": json.loads(row[0])["reason"]}, status=400)
++            else:
++                self.reply(json.loads(row[1]))
+         elif path == "/api/tptp/problem":

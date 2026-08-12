@@ -1,0 +1,46 @@
+@@ -48,3 +48,4 @@
+ const evaluationSection = el("section");
+-add(main, el("hr"), output, el("hr"), evaluationSection, el("hr"), historySection);
++const fullEvaluationSection = el("section");
++add(main, el("hr"), output, el("hr"), fullEvaluationSection, el("hr"), evaluationSection, el("hr"), historySection);
+ 
+@@ -143,5 +144,33 @@
+   add(evaluationSection, paragraph("Inspect an individual benchmark problem:"), select, document.createTextNode(" "), button,
+-    document.createTextNode(" "), refresh, paragraph("Re-run the full evaluation: python3 benchmark.py --tptp --seconds 2 --repeat 3"),
++    document.createTextNode(" "), refresh, paragraph("Re-run the 64-problem regression suite: python3 benchmark.py --tptp --seconds 2 --repeat 3"),
+     el("a", "Download full evaluation JSON", {href: "/api/evaluation/report", download: "qed-tptp-results.json"}));
+ };
++const refreshFullEvaluation = async () => {
++  const report = await api("/api/full-evaluation");
++  fullEvaluationSection.replaceChildren(el("h2", "Full TPTP 9.3.1 evaluation"));
++  if (report.available === false) {
++    fullEvaluationSection.append(paragraph("No full-library evaluation has been started."));
++    return;
++  }
++  fullEvaluationSection.append(paragraph(`${report.complete ? "Completed" : "In progress — partial results"}. ${report.selected_problems.toLocaleString()} FOF/CNF problems selected. Preflight: ${report.preflight_completed.toLocaleString()}. Measured runs: ${report.completed_runs.toLocaleString()}.`));
++  fullEvaluationSection.append(paragraph(`${report.seconds} seconds and ${report.max_clauses} clauses per run, one run per mode. ${report.workers} concurrent workers; use the sequential suite for timing comparisons. Unsupported inputs remain in the selected total. Known bug-list entries and unknown reference answers are unscored.`));
++  fullEvaluationSection.append(table(["Mode", "Correct proofs", "Correct negative decisions", "Unknown", "Errors", "Mismatches"],
++    Object.entries(report.summary).map(([m, s]) => [m, s.correct_proofs, s.correct_negative_decisions, s.statuses.unknown ?? 0, s.statuses.error ?? 0, s.mismatches])));
++  fullEvaluationSection.append(paragraph(`Input checks: ${Object.entries(report.preflight_states).map(([state, count]) => `${count} ${state}`).join(" · ")}`));
++  const refresh = el("button", "Refresh full evaluation", {type: "button"});
++  refresh.onclick = () => refreshFullEvaluation().catch(error => output.replaceChildren(paragraph(error.message)));
++  const name = el("input", "", {ariaLabel: "TPTP 9.3.1 problem identifier", placeholder: "SYN001+1", value: "SYN001+1"});
++  const button = el("button", "Load 9.3.1 problem", {type: "button"});
++  button.onclick = async () => {
++    try {
++      const p = await api(`/api/full-tptp/problem?name=${encodeURIComponent(name.value.trim())}`);
++      premises.value = p.premises.join("\n"); goal.value = p.goal;
++      seconds.value = String(report.seconds); cap.value = String(report.max_clauses);
++      description.textContent = `${p.name} · TPTP 9.3.1 · published status: ${p.expected_tptp_status}. Referenced axiom sets are included in the premises.`;
++      output.replaceChildren();
++    } catch (error) { output.replaceChildren(paragraph(error.message)); }
++  };
++  add(fullEvaluationSection, refresh, paragraph("Inspect a problem by its TPTP identifier:"), name, document.createTextNode(" "), button);
++  if (report.complete) fullEvaluationSection.append(paragraph(""), el("a", "Download all per-problem results (CSV)", {href: "/api/full-evaluation/results.csv", download: "qed-tptp-9.3.1.csv"}));
++};
+ try {
+@@ -154,3 +183,3 @@
+   };
+-  load.click(); await refreshHistory(); await refreshEvaluation();
++  load.click(); await refreshHistory(); await refreshFullEvaluation(); await refreshEvaluation();
+ } catch (error) { output.replaceChildren(paragraph(error.message)); }
