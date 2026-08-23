@@ -18,7 +18,7 @@ const api = async (url, body) => {
 
 const main = el("main");
 document.body.append(main);
-add(main, el("h1", "QED"), paragraph("A small first-order theorem prover. Enter what you know and what you want to prove."));
+add(main, el("h1", "QED"), paragraph("QED v2 · A small first-order theorem prover. Enter what you know and what you want to prove."));
 const examples = el("select", "", {id: "examples", ariaLabel: "Example problem"});
 const load = el("button", "Load example", {type: "button"});
 const description = paragraph("");
@@ -45,7 +45,9 @@ const help = add(el("details"), el("summary", "Syntax and examples"),
 main.append(help);
 const output = el("section", "", {ariaLive: "polite"});
 const historySection = el("section");
-add(main, el("hr"), output, el("hr"), historySection);
+const evaluationSection = el("section");
+const fullEvaluationSection = el("section");
+add(main, el("hr"), output, el("hr"), fullEvaluationSection, el("hr"), evaluationSection, el("hr"), historySection);
 
 const busy = state => { prove.disabled = compare.disabled = load.disabled = state; };
 const problem = () => ({premises: premises.value, goal: goal.value, mode: mode.value,
@@ -59,10 +61,10 @@ const render = result => {
   const title = {proved: "Proved", not_entailed: "Does not follow", unknown: "Unknown — search limit reached", error: "Check your input"}[result.status];
   const section = add(el("section"), el("h2", `${title} · ${result.mode}`), paragraph(result.reason));
   if (result.status === "not_entailed") section.append(paragraph("QED exhausted the complete clause search. This conclusion is not entailed by these premises; it does not mean the conclusion is always false. No countermodel is constructed."));
-  if (result.status === "proved") section.append(paragraph("Resolution/factoring steps checked. Parsing, normalization, and generated equality axioms are trusted. A proof establishes a consequence of your premises; it does not establish that the premises are consistent."));
+  if (result.status === "proved") section.append(paragraph("Recorded inference steps checked (including equality in v2). Parsing, normalization, and baseline equality axioms are trusted. A proof establishes a consequence of your premises; it does not establish that the premises are consistent."));
   const m = result.metrics;
   section.append(table(["Measure", "Value"], [
-    ["Prover time", m.elapsed_ms === undefined ? "Unavailable (hard limit)" : `${m.elapsed_ms.toFixed(3)} ms`],
+    ["Prover time", m.elapsed_ms === undefined ? "Unavailable" : `${m.elapsed_ms.toFixed(3)} ms`],
     ["Peak prover process memory", `${(m.peak_rss_bytes / 1048576).toFixed(2)} MiB`],
     ["Clauses selected", m.selected_clauses ?? "—"], ["Literal pairs checked", m.literal_pair_checks ?? "—"],
     ["Redundant clauses removed", m.redundant_clauses ?? "—"], ["Proof steps", m.proof_steps ?? "—"]]));
@@ -71,7 +73,7 @@ const render = result => {
   for (const step of result.proof) {
     const detail = add(el("details"), el("summary", `${step.id}. ${step.clause}`),
       paragraph(`${step.rule}${step.source ? ": " + step.source : " from " + step.parents.join(", ")}`),
-      el("pre", JSON.stringify({pivots: step.pivots, substitution: step.substitution}, null, 2)));
+      el("pre", JSON.stringify({pivots: step.pivots, direction: step.direction, term_position: step.term_position, substitution: step.substitution}, null, 2)));
     proof.append(detail);
   }
   section.append(proof);
@@ -113,6 +115,79 @@ const execute = async both => {
 };
 form.onsubmit = event => { event.preventDefault(); execute(false); };
 compare.onclick = () => execute(true);
+const refreshEvaluation = async () => {
+  const report = await api("/api/evaluation");
+  evaluationSection.replaceChildren(el("h2", "Historical TPTP regression suite (64 problems)"));
+  if (report.available === false) {
+    evaluationSection.append(paragraph("Run python3 fetch_tptp.py, then python3 benchmark.py --tptp --seconds 2 --repeat 3 to create the evaluation."));
+    return;
+  }
+  evaluationSection.append(paragraph(`${report.corpus}. ${report.complete ? "Completed" : "In progress"}: ${report.repeat} repetitions, ${report.limits.seconds} seconds and ${report.limits.max_clauses} clauses per run.`));
+  evaluationSection.append(paragraph("This fixed historical subset includes unsolved and unsupported problems. A problem counts as solved only when every repetition agrees with its published status. Inference checking trusts preprocessing."));
+  evaluationSection.append(table(["Mode", "Solved / selected", "Checked proofs / positive cases", "Unsupported", "Mismatches"],
+    Object.entries(report.summary).map(([mode, s]) => [mode, `${s.correct_all_repetitions}/${s.total_selected}`,
+      `${s.checked_proved_problems}/${s.positive_problems}`, s.unsupported, s.answer_mismatches])));
+  const select = el("select", "", {ariaLabel: "TPTP problem"});
+  report.problems.forEach(p => select.append(el("option", `${p.name.split('/').pop()} · ${p.expected_tptp_status}${p.unsupported ? " · unsupported" : ""}`, {value: p.name})));
+  const button = el("button", "Load TPTP problem", {type: "button"});
+  button.onclick = async () => {
+    try {
+      const p = await api(`/api/tptp/problem?name=${encodeURIComponent(select.value)}`);
+      premises.value = p.premises.join("\n"); goal.value = p.goal;
+      seconds.value = String(report.limits.seconds); cap.value = String(report.limits.max_clauses);
+      description.textContent = `${p.name} · TPTP 3.3.0 · published status: ${p.expected_tptp_status}. Edit or run it above. Axiom-file includes have been expanded.`;
+      output.replaceChildren();
+    } catch (error) { output.replaceChildren(paragraph(error.message)); }
+  };
+  const refresh = el("button", "Refresh evaluation", {type: "button"});
+  refresh.onclick = () => refreshEvaluation().catch(error => output.replaceChildren(paragraph(error.message)));
+  add(evaluationSection, paragraph("Inspect an individual benchmark problem:"), select, document.createTextNode(" "), button,
+    document.createTextNode(" "), refresh, paragraph("Re-run the 64-problem regression suite: python3 benchmark.py --tptp --seconds 2 --repeat 3"),
+    el("a", "Download historical evaluation JSON", {href: "/api/evaluation/report", download: "qed-tptp-results.json"}));
+};
+const refreshFullEvaluation = async () => {
+  const report = await api("/api/full-evaluation");
+  fullEvaluationSection.replaceChildren(el("h2", "Full TPTP 9.3.1 evaluation · QED v2"));
+  if (report.available === false) {
+    fullEvaluationSection.append(paragraph(report.pipeline ? "Preparing the QED v2 evaluation. Refresh this page shortly." : "No QED v2 evaluation has been started."));
+    return;
+  }
+  fullEvaluationSection.append(paragraph("This is a fresh evaluation of QED v2 with the same corpus and limits as v1. The original results are preserved."));
+  const stage = {coverage: "Input checks and full search", timing: "Sequential timing measurements", complete: "Complete — search, timings and artifact checks finished", failed: "Stopped — needs attention"}[report.pipeline?.stage];
+  if (stage) fullEvaluationSection.append(paragraph(`Evaluation stage: ${stage}${report.pipeline.error ? ". " + report.pipeline.error : ""}`));
+  add(fullEvaluationSection, el("a", "Download preserved v1 results", {href: "/api/full-evaluation/v1", download: "qed-v1-results.json"}), document.createTextNode(" · "),
+    el("a", "Download preserved v1 timings", {href: "/api/full-evaluation/v1-metrics", download: "qed-v1-timings.json"}));
+  fullEvaluationSection.append(paragraph(`${report.complete ? "Full search completed" : "In progress — partial results"}. ${report.selected_problems.toLocaleString()} FOF/CNF problems selected. Preflight: ${report.preflight_completed.toLocaleString()}. Measured runs: ${report.completed_runs.toLocaleString()}.`));
+  fullEvaluationSection.append(paragraph(`${report.seconds} seconds and ${report.max_clauses} clauses per run, one run per mode. ${report.workers} concurrent workers; use the sequential suite for timing comparisons. Unsupported inputs remain in the selected total. Known bug-list entries and unknown reference answers are unscored.`));
+  fullEvaluationSection.append(table(["Mode", "Correct proofs", "Correct negative decisions", "Unknown", "Errors", "Mismatches"],
+    Object.entries(report.summary).map(([m, s]) => [m, s.correct_proofs, s.correct_negative_decisions, s.statuses.unknown ?? 0, s.statuses.error ?? 0, s.mismatches])));
+  fullEvaluationSection.append(paragraph(`Input checks: ${Object.entries(report.preflight_states).map(([state, count]) => `${count} ${state}`).join(" · ")}`));
+  const metrics = await api("/api/full-evaluation/metrics");
+  if (metrics.available === false || !metrics.complete) {
+    fullEvaluationSection.append(paragraph("Paired runtime and literal-comparison medians will appear after the full search and sequential timing reruns finish."));
+  } else {
+    fullEvaluationSection.append(paragraph(`Paired efficiency: ${metrics.aggregate.problems} shared, verified successes; three sequential runs per mode. These medians describe this shared-success subset. Literal comparisons count resolution-generator work, excluding simplification and paramodulation.`));
+    fullEvaluationSection.append(table(["Metric", "Baseline median", "Optimized median", "Reduction"],
+      Object.entries(metrics.aggregate.fields).map(([name, s]) => [name === "median_ms" ? "Prover time (ms)" : "Candidate literal comparisons",
+        s.median.baseline?.toFixed(4) ?? "—", s.median.optimized?.toFixed(4) ?? "—", s.median.reduction_percent === null ? "—" : `${s.median.reduction_percent.toFixed(2)}%`])));
+    fullEvaluationSection.append(el("a", "Download paired metrics", {href: "/api/full-evaluation/metrics", download: "qed-tptp-paired-metrics.json"}));
+  }
+  const refresh = el("button", "Refresh full evaluation", {type: "button"});
+  refresh.onclick = () => refreshFullEvaluation().catch(error => output.replaceChildren(paragraph(error.message)));
+  const name = el("input", "", {ariaLabel: "TPTP 9.3.1 problem identifier", placeholder: "SYN001+1", value: "SYN001+1"});
+  const button = el("button", "Load 9.3.1 problem", {type: "button"});
+  button.onclick = async () => {
+    try {
+      const p = await api(`/api/full-tptp/problem?name=${encodeURIComponent(name.value.trim())}`);
+      premises.value = p.premises.join("\n"); goal.value = p.goal;
+      seconds.value = String(report.seconds); cap.value = String(report.max_clauses);
+      description.textContent = `${p.name} · TPTP 9.3.1 · published status: ${p.expected_tptp_status}. Referenced axiom sets are included in the premises.`;
+      output.replaceChildren();
+    } catch (error) { output.replaceChildren(paragraph(error.message)); }
+  };
+  add(fullEvaluationSection, refresh, paragraph("Inspect a problem by its TPTP identifier:"), name, document.createTextNode(" "), button);
+  if (report.complete) fullEvaluationSection.append(paragraph(""), el("a", "Download all per-problem results (CSV)", {href: "/api/full-evaluation/results.csv", download: "qed-tptp-9.3.1.csv"}));
+};
 try {
   const data = await api("/api/examples");
   data.forEach((example, i) => examples.append(el("option", example.name, {value: String(i)})));
@@ -121,5 +196,5 @@ try {
     premises.value = example.premises.join("\n"); goal.value = example.goal; description.textContent = example.description;
     output.replaceChildren();
   };
-  load.click(); await refreshHistory();
+  load.click(); await refreshHistory(); await refreshFullEvaluation(); await refreshEvaluation();
 } catch (error) { output.replaceChildren(paragraph(error.message)); }
