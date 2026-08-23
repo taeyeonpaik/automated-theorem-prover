@@ -25,8 +25,16 @@ def phase(stage, error=None):
     temp.replace(path)
 phase('coverage')
 try:
-    subprocess.run([sys.executable,str(root/'full_evaluation.py'),str(args.library.resolve()),
-        '--output',str(output),'--workers','4','--seconds','2','--max-clauses','5000'],check=True,cwd=root)
+    previous=output/'summary.json'
+    finished=json.loads(previous.read_text()) if previous.exists() else {}
+    if finished.get('complete'):
+        assert finished['seconds']==2 and finished['max_clauses']==5000 and finished['workers']==4
+        assert hashlib.sha256((args.library/'manifest.json').read_bytes()).hexdigest()==finished['manifest_sha256']
+        # Do not rewrite the completed coverage report: timing resume pins its hash.
+        # The timing runner verifies the executable and every proof-related source.
+    else:
+        subprocess.run([sys.executable,str(root/'full_evaluation.py'),str(args.library.resolve()),
+            '--output',str(output),'--workers','4','--seconds','2','--max-clauses','5000'],check=True,cwd=root)
 except Exception as error:
     phase('failed',str(error)); raise
 summary=json.loads((output/'summary.json').read_text())
