@@ -1,0 +1,164 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "baseline",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "~p(c, V0, V1)",
+      "rule": "input",
+      "source": "premise_1:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 2,
+      "clause": "~q(V0, c, V1)",
+      "rule": "input",
+      "source": "premise_2:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "~r(V0, V1, c)",
+      "rule": "input",
+      "source": "premise_3:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 6,
+      "clause": "s(c)",
+      "rule": "input",
+      "source": "premise_6:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 7,
+      "clause": "~s(V0) | ~s(V1) | ~s(V2) | p(V0, V1, V2) | q(V0, V1, V2) | r(V0, V1, V2)",
+      "rule": "input",
+      "source": "premise_7:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 20,
+      "clause": "~s(V0) | ~s(V1) | ~s(c) | p(V0, V1, c) | q(V0, V1, c)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        7,
+        3
+      ],
+      "pivots": [
+        5,
+        0
+      ],
+      "substitution": {
+        "l:V2": "c",
+        "l:V1": "r:V1",
+        "l:V0": "r:V0"
+      },
+      "depth": 1
+    },
+    {
+      "id": 84,
+      "clause": "~s(V0) | ~s(c) | p(V0, c, c)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        20,
+        2
+      ],
+      "pivots": [
+        4,
+        0
+      ],
+      "substitution": {
+        "r:V1": "c",
+        "l:V1": "c",
+        "l:V0": "r:V0"
+      },
+      "depth": 2
+    },
+    {
+      "id": 172,
+      "clause": "~s(c)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        84,
+        1
+      ],
+      "pivots": [
+        2,
+        0
+      ],
+      "substitution": {
+        "r:V1": "c",
+        "r:V0": "c",
+        "l:V0": "c"
+      },
+      "depth": 3
+    },
+    {
+      "id": 211,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        172,
+        6
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 4
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 11.3111,
+    "ocaml_allocated_bytes": 46464368,
+    "input_clauses": 7,
+    "generated_clauses": 714,
+    "kept_clauses": 211,
+    "selected_clauses": 172,
+    "literal_pair_checks": 172761,
+    "redundant_clauses": 503,
+    "max_passive": 94,
+    "max_derivation_depth": 4,
+    "proof_steps": 9,
+    "process_wall_ms": 16.8936,
+    "peak_rss_bytes": 5357568
+  },
+  "problem": {
+    "premises": [
+      "( ~ p(c,X,Y) )",
+      "( ~ q(X,c,Y) )",
+      "( ~ r(X,Y,c) )",
+      "( s(a) )",
+      "( s(b) )",
+      "( s(c) )",
+      "( ~ s(X) | ~ s(Y) | ~ s(Z) | p(X,Y,Z) | q(X,Y,Z) | r(X,Y,Z) )"
+    ],
+    "goal": "false",
+    "mode": "baseline",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

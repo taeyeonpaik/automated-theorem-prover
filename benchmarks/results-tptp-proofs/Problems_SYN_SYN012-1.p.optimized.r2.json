@@ -1,0 +1,294 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "optimized",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "~big_f(V0, V1) | ~big_f(V0, g(V0, V1)) | big_g(V1, g(V0, V1))",
+      "rule": "input",
+      "source": "premise_1:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 2,
+      "clause": "~big_f(V0, V1) | ~big_g(V1, g(V0, V1)) | big_f(V0, g(V0, V1))",
+      "rule": "input",
+      "source": "premise_2:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "~big_f(V0, V1) | ~big_f(g(V0, V1), g(V0, V1)) | big_g(g(V0, V1), g(V0, V1))",
+      "rule": "input",
+      "source": "premise_3:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 4,
+      "clause": "big_f(V0, V1) | big_f(g(V0, V1), g(V0, V1))",
+      "rule": "input",
+      "source": "premise_4:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 5,
+      "clause": "~big_g(g(V0, V1), g(V0, V1)) | big_f(V0, V1)",
+      "rule": "input",
+      "source": "premise_5:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 6,
+      "clause": "big_g(V0, V1) | big_g(g(V0, V1), g(V0, V1))",
+      "rule": "input",
+      "source": "premise_6:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 7,
+      "clause": "~big_g(V0, V1) | ~big_g(g(V0, V1), g(V0, V1))",
+      "rule": "input",
+      "source": "premise_7:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 14,
+      "clause": "big_f(V0, V1) | big_g(V0, V1)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        6,
+        5
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {
+        "l:V1": "r:V1",
+        "l:V0": "r:V0"
+      },
+      "depth": 1
+    },
+    {
+      "id": 16,
+      "clause": "~big_f(V0, V1) | big_g(V0, g(V0, V1)) | big_g(V1, g(V0, V1))",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        14,
+        1
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {
+        "l:V1": "g(r:V0, r:V1)",
+        "l:V0": "r:V0"
+      },
+      "depth": 2
+    },
+    {
+      "id": 39,
+      "clause": "~big_f(V0, V0) | big_g(V0, g(V0, V0))",
+      "rule": "factoring",
+      "source": "",
+      "parents": [
+        16
+      ],
+      "pivots": [
+        1,
+        2
+      ],
+      "substitution": {
+        "V0": "V1"
+      },
+      "depth": 3
+    },
+    {
+      "id": 52,
+      "clause": "~big_f(V0, V1) | big_g(g(V0, V1), g(V0, V1))",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        3,
+        14
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {
+        "r:V1": "g(l:V0, l:V1)",
+        "r:V0": "g(l:V0, l:V1)"
+      },
+      "depth": 2
+    },
+    {
+      "id": 54,
+      "clause": "~big_f(V0, V0) | big_f(V0, g(V0, V0))",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        39,
+        2
+      ],
+      "pivots": [
+        1,
+        1
+      ],
+      "substitution": {
+        "r:V1": "r:V0",
+        "l:V0": "r:V0"
+      },
+      "depth": 4
+    },
+    {
+      "id": 86,
+      "clause": "~big_f(V0, V1) | ~big_g(V0, V1)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        52,
+        7
+      ],
+      "pivots": [
+        1,
+        1
+      ],
+      "substitution": {
+        "l:V1": "r:V1",
+        "l:V0": "r:V0"
+      },
+      "depth": 3
+    },
+    {
+      "id": 98,
+      "clause": "~big_f(V0, V0) | ~big_f(V0, g(V0, V0))",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        86,
+        39
+      ],
+      "pivots": [
+        1,
+        1
+      ],
+      "substitution": {
+        "l:V1": "g(r:V0, r:V0)",
+        "l:V0": "r:V0"
+      },
+      "depth": 4
+    },
+    {
+      "id": 107,
+      "clause": "~big_f(V0, V0)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        98,
+        54
+      ],
+      "pivots": [
+        1,
+        1
+      ],
+      "substitution": {
+        "l:V0": "r:V0"
+      },
+      "depth": 5
+    },
+    {
+      "id": 109,
+      "clause": "big_f(V0, V1)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        107,
+        4
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {
+        "l:V0": "g(r:V0, r:V1)"
+      },
+      "depth": 6
+    },
+    {
+      "id": 121,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        109,
+        107
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V1": "r:V0",
+        "l:V0": "r:V0"
+      },
+      "depth": 7
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 6.9489,
+    "ocaml_allocated_bytes": 22860416,
+    "input_clauses": 7,
+    "generated_clauses": 230,
+    "kept_clauses": 121,
+    "selected_clauses": 22,
+    "literal_pair_checks": 276,
+    "redundant_clauses": 109,
+    "max_passive": 98,
+    "max_derivation_depth": 7,
+    "proof_steps": 17,
+    "process_wall_ms": 12.2953,
+    "peak_rss_bytes": 5308416
+  },
+  "problem": {
+    "premises": [
+      "( ~ big_f(X,Y) | ~ big_f(X,g(X,Y)) | big_g(Y,g(X,Y)) )",
+      "( ~ big_f(X,Y) | big_f(X,g(X,Y)) | ~ big_g(Y,g(X,Y)) )",
+      "( ~ big_f(X,Y) | ~ big_f(g(X,Y),g(X,Y)) | big_g(g(X,Y),g(X,Y)) )",
+      "( big_f(X,Y) | big_f(g(X,Y),g(X,Y)) )",
+      "( big_f(X,Y) | ~ big_g(g(X,Y),g(X,Y)) )",
+      "( big_g(X,Y) | big_g(g(X,Y),g(X,Y)) )",
+      "( ~ big_g(X,Y) | ~ big_g(g(X,Y),g(X,Y)) )"
+    ],
+    "goal": "false",
+    "mode": "optimized",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

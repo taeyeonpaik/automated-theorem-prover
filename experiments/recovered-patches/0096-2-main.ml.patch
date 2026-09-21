@@ -1,0 +1,13 @@
+@@ -34,4 +34,5 @@
+ let () =
+-  let baseline=ref false and seconds=ref 3.0 and cap=ref 5000 and path=ref None in
++  let baseline=ref false and check_input=ref false and seconds=ref 3.0 and cap=ref 5000 and path=ref None in
+   Arg.parse ["--baseline",Arg.Set baseline," FIFO without indexing or subsumption";
++    "--check-input",Arg.Set check_input," Parse and validate without proof search";
+     "--seconds",Arg.Set_float seconds," Maximum search seconds";
+@@ -52,2 +53,5 @@
+     let premises=List.mapi (fun i p -> "premise_" ^ string_of_int(i+1),Parser.parse p) premises in
++    if !check_input then (
++      ignore(validate(goal :: List.map snd premises));
++      print_endline(obj["status",str "valid"]); exit 0);
+     let r=prove ~optimized:(not !baseline) ~seconds:!seconds ~max_clauses:!cap premises goal in

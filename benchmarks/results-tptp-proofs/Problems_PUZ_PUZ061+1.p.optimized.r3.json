@@ -1,0 +1,179 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "optimized",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 2,
+      "clause": "~food(V0) | likes(sk2, V0)",
+      "rule": "input",
+      "source": "negated_goal:2",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 5,
+      "clause": "~eats(V0, V1) | ~not_killed_by(V0, V1) | food(V1)",
+      "rule": "input",
+      "source": "negated_goal:5",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 6,
+      "clause": "eats(sk3, sk1)",
+      "rule": "input",
+      "source": "negated_goal:6",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 7,
+      "clause": "alive(sk3)",
+      "rule": "input",
+      "source": "negated_goal:7",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 9,
+      "clause": "~alive(V0) | not_killed_by(V0, V1)",
+      "rule": "input",
+      "source": "negated_goal:9",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 10,
+      "clause": "~likes(sk2, sk1)",
+      "rule": "input",
+      "source": "negated_goal:10",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 15,
+      "clause": "~food(sk1)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        10,
+        2
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {
+        "r:V0": "sk1"
+      },
+      "depth": 1
+    },
+    {
+      "id": 20,
+      "clause": "not_killed_by(sk3, V0)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        9,
+        7
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V0": "sk3"
+      },
+      "depth": 1
+    },
+    {
+      "id": 21,
+      "clause": "~eats(sk3, V0) | food(V0)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        20,
+        5
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {
+        "l:V0": "r:V1",
+        "r:V0": "sk3"
+      },
+      "depth": 2
+    },
+    {
+      "id": 23,
+      "clause": "food(sk1)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        21,
+        6
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V0": "sk1"
+      },
+      "depth": 3
+    },
+    {
+      "id": 26,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        23,
+        15
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 4
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 0.1659,
+    "ocaml_allocated_bytes": 527352,
+    "input_clauses": 10,
+    "generated_clauses": 26,
+    "kept_clauses": 26,
+    "selected_clauses": 15,
+    "literal_pair_checks": 21,
+    "redundant_clauses": 0,
+    "max_passive": 10,
+    "max_derivation_depth": 4,
+    "proof_steps": 11,
+    "process_wall_ms": 5.0729,
+    "peak_rss_bytes": 3325952
+  },
+  "problem": {
+    "premises": [],
+    "goal": "( ! [Peanuts,John,Bill,Sue,Apples,Chicken] : ( ( ! [X,Y] : ( ( alive(Y) & eats(Y,Chicken) ) => likes(Y,X) ) & ! [X] : ( food(X) => likes(John,X) ) & food(Apples) & food(Chicken) & ! [X] : ( ? [Y] : ( eats(Y,X) & not_killed_by(Y,X) ) => food(X) ) & eats(Bill,Peanuts) & alive(Bill) & ! [X] : ( eats(Bill,X) => eats(Sue,X) ) & ! [Y] : ( alive(Y) => ! [X] : not_killed_by(Y,X) ) ) => likes(John,Peanuts) ) )",
+    "mode": "optimized",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

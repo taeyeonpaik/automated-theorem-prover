@@ -1,0 +1,735 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "optimized",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "from_mars(V0) | from_venus(V0)",
+      "rule": "input",
+      "source": "premise_1:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 2,
+      "clause": "~from_mars(V0) | ~from_venus(V0)",
+      "rule": "input",
+      "source": "premise_2:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "female(V0) | male(V0)",
+      "rule": "input",
+      "source": "premise_3:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 6,
+      "clause": "~liar(V0) | ~truthteller(V0)",
+      "rule": "input",
+      "source": "premise_6:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 8,
+      "clause": "~a_truth(statement_by(V0)) | truthteller(V0)",
+      "rule": "input",
+      "source": "premise_9:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 9,
+      "clause": "a_truth(statement_by(V0)) | liar(V0)",
+      "rule": "input",
+      "source": "premise_10:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 10,
+      "clause": "~female(V0) | ~from_venus(V0) | truthteller(V0)",
+      "rule": "input",
+      "source": "premise_11:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 13,
+      "clause": "~female(V0) | ~from_mars(V0) | liar(V0)",
+      "rule": "input",
+      "source": "premise_14:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 14,
+      "clause": "~says(V0, V1) | ~truthteller(V0) | a_truth(V1)",
+      "rule": "input",
+      "source": "premise_15:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 15,
+      "clause": "~a_truth(V0) | ~liar(V1) | ~says(V1, V0)",
+      "rule": "input",
+      "source": "premise_16:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 16,
+      "clause": "says(a, a_from_mars)",
+      "rule": "input",
+      "source": "premise_17:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 18,
+      "clause": "~from_mars(a) | a_truth(a_from_mars)",
+      "rule": "input",
+      "source": "premise_19:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 19,
+      "clause": "~a_truth(a_from_mars) | from_mars(a)",
+      "rule": "input",
+      "source": "premise_20:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 20,
+      "clause": "~a_truth(a_from_mars) | ~a_truth(statement_by(b))",
+      "rule": "input",
+      "source": "premise_21:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 23,
+      "clause": "a_truth(a_from_mars) | a_truth(statement_by(b))",
+      "rule": "input",
+      "source": "premise_24:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 25,
+      "clause": "~male(a) | female(b)",
+      "rule": "input",
+      "source": "premise_26:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 26,
+      "clause": "from_mars(a) | from_mars(b)",
+      "rule": "input",
+      "source": "premise_27:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 27,
+      "clause": "from_venus(a) | from_venus(b)",
+      "rule": "input",
+      "source": "premise_28:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 40,
+      "clause": "~a_truth(statement_by(V0)) | ~liar(V0)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        8,
+        6
+      ],
+      "pivots": [
+        1,
+        1
+      ],
+      "substitution": {
+        "l:V0": "r:V0"
+      },
+      "depth": 1
+    },
+    {
+      "id": 43,
+      "clause": "~truthteller(V0) | a_truth(statement_by(V0))",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        9,
+        6
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {
+        "l:V0": "r:V0"
+      },
+      "depth": 1
+    },
+    {
+      "id": 45,
+      "clause": "~a_truth(a_from_mars) | ~from_venus(a)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        19,
+        2
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {
+        "r:V0": "a"
+      },
+      "depth": 1
+    },
+    {
+      "id": 51,
+      "clause": "female(a) | female(b)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        25,
+        3
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {
+        "r:V0": "a"
+      },
+      "depth": 1
+    },
+    {
+      "id": 55,
+      "clause": "~from_venus(b) | from_mars(a)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        26,
+        2
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {
+        "r:V0": "b"
+      },
+      "depth": 1
+    },
+    {
+      "id": 56,
+      "clause": "a_truth(a_from_mars) | from_mars(b)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        26,
+        18
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 80,
+      "clause": "~a_truth(a_from_mars) | from_venus(b)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        45,
+        27
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 104,
+      "clause": "~truthteller(a) | a_truth(a_from_mars)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        14,
+        16
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V1": "a_from_mars",
+        "l:V0": "a"
+      },
+      "depth": 1
+    },
+    {
+      "id": 114,
+      "clause": "~from_venus(b) | a_truth(a_from_mars)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        55,
+        18
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 126,
+      "clause": "~a_truth(a_from_mars) | ~liar(a)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        15,
+        16
+      ],
+      "pivots": [
+        2,
+        0
+      ],
+      "substitution": {
+        "l:V0": "a_from_mars",
+        "l:V1": "a"
+      },
+      "depth": 1
+    },
+    {
+      "id": 142,
+      "clause": "~a_truth(a_from_mars) | liar(b)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        20,
+        9
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {
+        "r:V0": "b"
+      },
+      "depth": 1
+    },
+    {
+      "id": 146,
+      "clause": "~a_truth(a_from_mars) | ~truthteller(b)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        20,
+        43
+      ],
+      "pivots": [
+        1,
+        1
+      ],
+      "substitution": {
+        "r:V0": "b"
+      },
+      "depth": 2
+    },
+    {
+      "id": 155,
+      "clause": "~from_venus(a) | ~truthteller(a)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        104,
+        45
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 168,
+      "clause": "~liar(b) | a_truth(a_from_mars)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        23,
+        40
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {
+        "r:V0": "b"
+      },
+      "depth": 2
+    },
+    {
+      "id": 175,
+      "clause": "~from_mars(a) | ~liar(a)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        126,
+        18
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 206,
+      "clause": "from_mars(b) | liar(b)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        142,
+        56
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 216,
+      "clause": "~from_venus(b) | ~truthteller(b)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        146,
+        114
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {},
+      "depth": 3
+    },
+    {
+      "id": 240,
+      "clause": "~female(a) | ~from_venus(a)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        155,
+        10
+      ],
+      "pivots": [
+        1,
+        2
+      ],
+      "substitution": {
+        "r:V0": "a"
+      },
+      "depth": 3
+    },
+    {
+      "id": 288,
+      "clause": "~liar(b) | from_venus(b)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        168,
+        80
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {},
+      "depth": 3
+    },
+    {
+      "id": 302,
+      "clause": "~female(a) | ~from_mars(a)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        175,
+        13
+      ],
+      "pivots": [
+        1,
+        2
+      ],
+      "substitution": {
+        "r:V0": "a"
+      },
+      "depth": 3
+    },
+    {
+      "id": 366,
+      "clause": "~female(b) | liar(b)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        206,
+        13
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {
+        "r:V0": "b"
+      },
+      "depth": 3
+    },
+    {
+      "id": 449,
+      "clause": "~female(b) | ~from_venus(b)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        216,
+        10
+      ],
+      "pivots": [
+        1,
+        2
+      ],
+      "substitution": {
+        "r:V0": "b"
+      },
+      "depth": 4
+    },
+    {
+      "id": 516,
+      "clause": "~female(a) | from_mars(a)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        240,
+        1
+      ],
+      "pivots": [
+        1,
+        1
+      ],
+      "substitution": {
+        "r:V0": "a"
+      },
+      "depth": 4
+    },
+    {
+      "id": 776,
+      "clause": "~female(a)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        516,
+        302
+      ],
+      "pivots": [
+        1,
+        1
+      ],
+      "substitution": {},
+      "depth": 5
+    },
+    {
+      "id": 779,
+      "clause": "female(b)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        776,
+        51
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 6
+    },
+    {
+      "id": 790,
+      "clause": "liar(b)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        779,
+        366
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 7
+    },
+    {
+      "id": 791,
+      "clause": "~from_venus(b)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        779,
+        449
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 7
+    },
+    {
+      "id": 801,
+      "clause": "from_venus(b)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        790,
+        288
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 8
+    },
+    {
+      "id": 823,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        801,
+        791
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 9
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 97.7318,
+    "ocaml_allocated_bytes": 527185568,
+    "input_clauses": 40,
+    "generated_clauses": 2048,
+    "kept_clauses": 823,
+    "selected_clauses": 148,
+    "literal_pair_checks": 2902,
+    "redundant_clauses": 1225,
+    "max_passive": 674,
+    "max_derivation_depth": 9,
+    "proof_steps": 47,
+    "process_wall_ms": 103.545,
+    "peak_rss_bytes": 6701056
+  },
+  "problem": {
+    "premises": [
+      "( from_mars(X) | from_venus(X) )",
+      "( ~ from_mars(X) | ~ from_venus(X) )",
+      "( male(X) | female(X) )",
+      "( ~ male(X) | ~ female(X) )",
+      "( truthteller(X) | liar(X) )",
+      "( ~ truthteller(X) | ~ liar(X) )",
+      "( ~ says(X,Y) | a_truth(Y) | ~ a_truth(Y) )",
+      "( ~ says(X,Y) | Y = statement_by(X) )",
+      "( ~ a_truth(statement_by(X)) | truthteller(X) )",
+      "( a_truth(statement_by(X)) | liar(X) )",
+      "( ~ from_venus(X) | ~ female(X) | truthteller(X) )",
+      "( ~ from_venus(X) | ~ male(X) | liar(X) )",
+      "( ~ from_mars(X) | ~ male(X) | truthteller(X) )",
+      "( ~ from_mars(X) | ~ female(X) | liar(X) )",
+      "( ~ truthteller(X) | ~ says(X,Y) | a_truth(Y) )",
+      "( ~ liar(X) | ~ says(X,Y) | ~ a_truth(Y) )",
+      "( says(a,a_from_mars) )",
+      "( says(b,a_has_lied) )",
+      "( ~ from_mars(a) | a_truth(a_from_mars) )",
+      "( from_mars(a) | ~ a_truth(a_from_mars) )",
+      "( ~ a_truth(a_from_mars) | ~ a_truth(statement_by(b)) )",
+      "( statement_by(a) = a_from_mars )",
+      "( statement_by(b) = a_has_lied )",
+      "( a_truth(a_from_mars) | a_truth(statement_by(b)) )",
+      "( ~ female(a) | male(b) )",
+      "( ~ male(a) | female(b) )",
+      "( from_mars(b) | from_mars(a) )",
+      "( from_venus(a) | from_venus(b) )"
+    ],
+    "goal": "false",
+    "mode": "optimized",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

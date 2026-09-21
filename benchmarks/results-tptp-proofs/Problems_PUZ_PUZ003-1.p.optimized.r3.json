@@ -1,0 +1,295 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "optimized",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "~member(V0) | ~member(V1) | ~shaved(V0, V1) | shaved(members, V0)",
+      "rule": "input",
+      "source": "premise_1:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 2,
+      "clause": "~member(V0) | ~shaved(members, V1) | shaved(V0, V1)",
+      "rule": "input",
+      "source": "premise_2:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "member(guido)",
+      "rule": "input",
+      "source": "premise_3:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 4,
+      "clause": "member(lorenzo)",
+      "rule": "input",
+      "source": "premise_4:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 5,
+      "clause": "member(petruchio)",
+      "rule": "input",
+      "source": "premise_5:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 6,
+      "clause": "member(cesare)",
+      "rule": "input",
+      "source": "premise_6:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 7,
+      "clause": "shaved(guido, cesare)",
+      "rule": "input",
+      "source": "premise_7:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 8,
+      "clause": "~shaved(petruchio, lorenzo)",
+      "rule": "input",
+      "source": "premise_8:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 11,
+      "clause": "~member(V0) | ~shaved(guido, V0) | shaved(members, guido)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        3,
+        1
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "r:V0": "guido"
+      },
+      "depth": 1
+    },
+    {
+      "id": 12,
+      "clause": "~member(V0) | ~shaved(V0, guido) | shaved(members, V0)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        3,
+        1
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {
+        "r:V1": "guido"
+      },
+      "depth": 1
+    },
+    {
+      "id": 23,
+      "clause": "~shaved(members, V0) | shaved(petruchio, V0)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        2,
+        5
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V0": "petruchio"
+      },
+      "depth": 1
+    },
+    {
+      "id": 38,
+      "clause": "~shaved(members, lorenzo)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        23,
+        8
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {
+        "l:V0": "lorenzo"
+      },
+      "depth": 2
+    },
+    {
+      "id": 68,
+      "clause": "~member(cesare) | shaved(members, guido)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        11,
+        7
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {
+        "l:V0": "cesare"
+      },
+      "depth": 2
+    },
+    {
+      "id": 75,
+      "clause": "shaved(members, guido)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        68,
+        6
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 3
+    },
+    {
+      "id": 81,
+      "clause": "~member(V0) | shaved(V0, guido)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        75,
+        2
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {
+        "r:V1": "guido"
+      },
+      "depth": 4
+    },
+    {
+      "id": 107,
+      "clause": "~member(V0) | shaved(members, V0)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        81,
+        12
+      ],
+      "pivots": [
+        1,
+        1
+      ],
+      "substitution": {
+        "l:V0": "r:V0"
+      },
+      "depth": 5
+    },
+    {
+      "id": 117,
+      "clause": "~member(lorenzo)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        107,
+        38
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {
+        "l:V0": "lorenzo"
+      },
+      "depth": 6
+    },
+    {
+      "id": 125,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        117,
+        4
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 7
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 3.752,
+    "ocaml_allocated_bytes": 16971536,
+    "input_clauses": 8,
+    "generated_clauses": 239,
+    "kept_clauses": 125,
+    "selected_clauses": 32,
+    "literal_pair_checks": 471,
+    "redundant_clauses": 114,
+    "max_passive": 93,
+    "max_derivation_depth": 7,
+    "proof_steps": 18,
+    "process_wall_ms": 9.5457,
+    "peak_rss_bytes": 5177344
+  },
+  "problem": {
+    "premises": [
+      "( ~ member(X) | ~ member(Y) | ~ shaved(X,Y) | shaved(members,X) )",
+      "( ~ shaved(members,X) | ~ member(Y) | shaved(Y,X) )",
+      "( member(guido) )",
+      "( member(lorenzo) )",
+      "( member(petruchio) )",
+      "( member(cesare) )",
+      "( shaved(guido,cesare) )",
+      "( ~ shaved(petruchio,lorenzo) )"
+    ],
+    "goal": "false",
+    "mode": "optimized",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

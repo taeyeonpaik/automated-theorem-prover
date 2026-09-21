@@ -1,0 +1,222 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "baseline",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "~p1(V0, f(V1)) | q1(f(V0), V1) | q2(V0, f(V1))",
+      "rule": "input",
+      "source": "premise_1:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 2,
+      "clause": "p1(a, V0)",
+      "rule": "input",
+      "source": "premise_2:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "~q2(V0, f(V1))",
+      "rule": "input",
+      "source": "premise_3:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 4,
+      "clause": "~p2(V0, f(V1)) | q3(f(V0), V1) | q4(V0, f(V1))",
+      "rule": "input",
+      "source": "premise_4:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 5,
+      "clause": "~q3(V0, g(V1))",
+      "rule": "input",
+      "source": "premise_5:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 6,
+      "clause": "~q4(f(f(V0)), f(g(f(V1))))",
+      "rule": "input",
+      "source": "premise_6:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 7,
+      "clause": "~q1(V0, f(V1)) | p2(f(V0), V1)",
+      "rule": "input",
+      "source": "premise_7:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 8,
+      "clause": "q1(f(a), V0) | q2(a, f(V0))",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        2,
+        1
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V0": "f(r:V1)",
+        "r:V0": "a"
+      },
+      "depth": 1
+    },
+    {
+      "id": 10,
+      "clause": "~p2(V0, f(g(V1))) | q4(V0, f(g(V1)))",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        5,
+        4
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {
+        "r:V1": "g(l:V1)",
+        "l:V0": "f(r:V0)"
+      },
+      "depth": 1
+    },
+    {
+      "id": 14,
+      "clause": "p2(f(f(a)), V0) | q2(a, f(f(V0)))",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        8,
+        7
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V0": "f(r:V1)",
+        "r:V0": "f(a)"
+      },
+      "depth": 2
+    },
+    {
+      "id": 18,
+      "clause": "~p2(f(f(V0)), f(g(f(V1))))",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        10,
+        6
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {
+        "l:V1": "f(r:V1)",
+        "l:V0": "f(f(r:V0))"
+      },
+      "depth": 2
+    },
+    {
+      "id": 27,
+      "clause": "p2(f(f(a)), V0)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        14,
+        3
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {
+        "r:V1": "f(l:V0)",
+        "r:V0": "a"
+      },
+      "depth": 3
+    },
+    {
+      "id": 37,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        27,
+        18
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V0": "f(g(f(r:V1)))",
+        "r:V0": "a"
+      },
+      "depth": 4
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 0.494,
+    "ocaml_allocated_bytes": 1412760,
+    "input_clauses": 7,
+    "generated_clauses": 76,
+    "kept_clauses": 37,
+    "selected_clauses": 27,
+    "literal_pair_checks": 1661,
+    "redundant_clauses": 39,
+    "max_passive": 17,
+    "max_derivation_depth": 4,
+    "proof_steps": 13,
+    "process_wall_ms": 7.2995,
+    "peak_rss_bytes": 4276224
+  },
+  "problem": {
+    "premises": [
+      "( ~ p1(X,f(Y)) | q1(f(X),Y) | q2(X,f(Y)) )",
+      "( p1(a,Y) )",
+      "( ~ q2(X,f(Y)) )",
+      "( ~ p2(X,f(Y)) | q3(f(X),Y) | q4(X,f(Y)) )",
+      "( ~ q3(X,g(Y)) )",
+      "( ~ q4(f(f(X)),f(g(f(Y)))) )",
+      "( ~ q1(X,f(Y)) | p2(f(X),Y) )"
+    ],
+    "goal": "false",
+    "mode": "baseline",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

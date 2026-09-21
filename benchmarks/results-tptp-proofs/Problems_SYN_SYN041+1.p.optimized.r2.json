@@ -1,0 +1,66 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "optimized",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 2,
+      "clause": "~q",
+      "rule": "input",
+      "source": "negated_goal:2",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "q",
+      "rule": "input",
+      "source": "negated_goal:3",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 5,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        3,
+        2
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 1
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 0.0172,
+    "ocaml_allocated_bytes": 30720,
+    "input_clauses": 4,
+    "generated_clauses": 5,
+    "kept_clauses": 5,
+    "selected_clauses": 3,
+    "literal_pair_checks": 1,
+    "redundant_clauses": 0,
+    "max_passive": 4,
+    "max_derivation_depth": 1,
+    "proof_steps": 3,
+    "process_wall_ms": 4.7661,
+    "peak_rss_bytes": 2768896
+  },
+  "problem": {
+    "premises": [],
+    "goal": "( ~ ( p => q ) => ( q => p ) )",
+    "mode": "optimized",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

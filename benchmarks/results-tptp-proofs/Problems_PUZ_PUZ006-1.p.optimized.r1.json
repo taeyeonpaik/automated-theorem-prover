@@ -1,0 +1,570 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "optimized",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "from_mars(V0) | from_venus(V0)",
+      "rule": "input",
+      "source": "premise_1:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "female(V0) | male(V0)",
+      "rule": "input",
+      "source": "premise_3:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 5,
+      "clause": "liar(V0) | truthteller(V0)",
+      "rule": "input",
+      "source": "premise_5:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 11,
+      "clause": "~from_venus(V0) | ~male(V0) | liar(V0)",
+      "rule": "input",
+      "source": "premise_12:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 14,
+      "clause": "~says(V0, V1) | ~truthteller(V0) | a_truth(V1)",
+      "rule": "input",
+      "source": "premise_15:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 15,
+      "clause": "~a_truth(V0) | ~liar(V1) | ~says(V1, V0)",
+      "rule": "input",
+      "source": "premise_16:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 16,
+      "clause": "says(ork, bog_is_from_venus)",
+      "rule": "input",
+      "source": "premise_17:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 17,
+      "clause": "says(bog, ork_is_from_mars)",
+      "rule": "input",
+      "source": "premise_18:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 18,
+      "clause": "says(ork, bog_is_male)",
+      "rule": "input",
+      "source": "premise_19:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 19,
+      "clause": "says(bog, ork_is_female)",
+      "rule": "input",
+      "source": "premise_20:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 20,
+      "clause": "~a_truth(bog_is_from_venus) | from_venus(bog)",
+      "rule": "input",
+      "source": "premise_21:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 25,
+      "clause": "~from_mars(ork) | a_truth(ork_is_from_mars)",
+      "rule": "input",
+      "source": "premise_26:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 26,
+      "clause": "~male(bog) | a_truth(bog_is_male)",
+      "rule": "input",
+      "source": "premise_27:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 27,
+      "clause": "~female(ork) | a_truth(ork_is_female)",
+      "rule": "input",
+      "source": "premise_28:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 28,
+      "clause": "~female(bog)",
+      "rule": "input",
+      "source": "premise_29:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 41,
+      "clause": "male(bog)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        3,
+        28
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V0": "bog"
+      },
+      "depth": 1
+    },
+    {
+      "id": 56,
+      "clause": "a_truth(ork_is_from_mars) | from_venus(ork)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        25,
+        1
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "r:V0": "ork"
+      },
+      "depth": 1
+    },
+    {
+      "id": 58,
+      "clause": "a_truth(bog_is_male)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        26,
+        41
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 64,
+      "clause": "~from_venus(bog) | liar(bog)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        11,
+        41
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {
+        "l:V0": "bog"
+      },
+      "depth": 2
+    },
+    {
+      "id": 65,
+      "clause": "a_truth(ork_is_female) | male(ork)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        27,
+        3
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "r:V0": "ork"
+      },
+      "depth": 1
+    },
+    {
+      "id": 92,
+      "clause": "~truthteller(ork) | a_truth(bog_is_from_venus)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        14,
+        16
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V1": "bog_is_from_venus",
+        "l:V0": "ork"
+      },
+      "depth": 1
+    },
+    {
+      "id": 106,
+      "clause": "~a_truth(bog_is_from_venus) | liar(bog)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        64,
+        20
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {},
+      "depth": 3
+    },
+    {
+      "id": 117,
+      "clause": "~a_truth(ork_is_from_mars) | ~liar(bog)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        15,
+        17
+      ],
+      "pivots": [
+        2,
+        0
+      ],
+      "substitution": {
+        "l:V0": "ork_is_from_mars",
+        "l:V1": "bog"
+      },
+      "depth": 1
+    },
+    {
+      "id": 118,
+      "clause": "~a_truth(bog_is_male) | ~liar(ork)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        15,
+        18
+      ],
+      "pivots": [
+        2,
+        0
+      ],
+      "substitution": {
+        "l:V0": "bog_is_male",
+        "l:V1": "ork"
+      },
+      "depth": 1
+    },
+    {
+      "id": 119,
+      "clause": "~a_truth(ork_is_female) | ~liar(bog)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        15,
+        19
+      ],
+      "pivots": [
+        2,
+        0
+      ],
+      "substitution": {
+        "l:V0": "ork_is_female",
+        "l:V1": "bog"
+      },
+      "depth": 1
+    },
+    {
+      "id": 256,
+      "clause": "~liar(ork)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        118,
+        58
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 3
+    },
+    {
+      "id": 257,
+      "clause": "truthteller(ork)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        256,
+        5
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "r:V0": "ork"
+      },
+      "depth": 4
+    },
+    {
+      "id": 259,
+      "clause": "~from_venus(ork) | ~male(ork)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        256,
+        11
+      ],
+      "pivots": [
+        0,
+        2
+      ],
+      "substitution": {
+        "r:V0": "ork"
+      },
+      "depth": 4
+    },
+    {
+      "id": 262,
+      "clause": "a_truth(bog_is_from_venus)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        257,
+        92
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 5
+    },
+    {
+      "id": 286,
+      "clause": "liar(bog)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        262,
+        106
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 6
+    },
+    {
+      "id": 290,
+      "clause": "~a_truth(ork_is_from_mars)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        286,
+        117
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {},
+      "depth": 7
+    },
+    {
+      "id": 314,
+      "clause": "from_venus(ork)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        290,
+        56
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 8
+    },
+    {
+      "id": 350,
+      "clause": "~a_truth(ork_is_female)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        119,
+        286
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {},
+      "depth": 7
+    },
+    {
+      "id": 354,
+      "clause": "male(ork)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        350,
+        65
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 8
+    },
+    {
+      "id": 545,
+      "clause": "~male(ork)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        259,
+        314
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 9
+    },
+    {
+      "id": 550,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        545,
+        354
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 10
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 49.372,
+    "ocaml_allocated_bytes": 265016936,
+    "input_clauses": 41,
+    "generated_clauses": 1302,
+    "kept_clauses": 550,
+    "selected_clauses": 130,
+    "literal_pair_checks": 1954,
+    "redundant_clauses": 752,
+    "max_passive": 419,
+    "max_derivation_depth": 10,
+    "proof_steps": 36,
+    "process_wall_ms": 55.9002,
+    "peak_rss_bytes": 6176768
+  },
+  "problem": {
+    "premises": [
+      "( from_mars(X) | from_venus(X) )",
+      "( ~ from_mars(X) | ~ from_venus(X) )",
+      "( male(X) | female(X) )",
+      "( ~ male(X) | ~ female(X) )",
+      "( truthteller(X) | liar(X) )",
+      "( ~ truthteller(X) | ~ liar(X) )",
+      "( ~ says(X,Y) | a_truth(Y) | ~ a_truth(Y) )",
+      "( ~ says(X,Y) | Y = statement_by(X) )",
+      "( ~ a_truth(statement_by(X)) | truthteller(X) )",
+      "( a_truth(statement_by(X)) | liar(X) )",
+      "( ~ from_venus(X) | ~ female(X) | truthteller(X) )",
+      "( ~ from_venus(X) | ~ male(X) | liar(X) )",
+      "( ~ from_mars(X) | ~ male(X) | truthteller(X) )",
+      "( ~ from_mars(X) | ~ female(X) | liar(X) )",
+      "( ~ truthteller(X) | ~ says(X,Y) | a_truth(Y) )",
+      "( ~ liar(X) | ~ says(X,Y) | ~ a_truth(Y) )",
+      "( says(ork,bog_is_from_venus) )",
+      "( says(bog,ork_is_from_mars) )",
+      "( says(ork,bog_is_male) )",
+      "( says(bog,ork_is_female) )",
+      "( ~ a_truth(bog_is_from_venus) | from_venus(bog) )",
+      "( ~ a_truth(ork_is_from_mars) | from_mars(ork) )",
+      "( ~ a_truth(bog_is_male) | male(bog) )",
+      "( ~ a_truth(ork_is_female) | female(ork) )",
+      "( ~ from_venus(bog) | a_truth(bog_is_from_venus) )",
+      "( ~ from_mars(ork) | a_truth(ork_is_from_mars) )",
+      "( ~ male(bog) | a_truth(bog_is_male) )",
+      "( ~ female(ork) | a_truth(ork_is_female) )",
+      "( ~ female(bog) )"
+    ],
+    "goal": "false",
+    "mode": "optimized",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

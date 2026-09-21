@@ -1,0 +1,180 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "optimized",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 13,
+      "clause": "cowlThing(V0)",
+      "rule": "input",
+      "source": "premise_13:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 25,
+      "clause": "~cowlThing(V0) | ~risEuroMPFrom(V1, V0) | cEuroMP(V1)",
+      "rule": "input",
+      "source": "premise_16:3",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 28,
+      "clause": "~rhasEuroMP(V0, V1) | risEuroMPFrom(V1, V0)",
+      "rule": "input",
+      "source": "premise_18:2",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 33,
+      "clause": "~cEuroMP(iKinnock)",
+      "rule": "input",
+      "source": "premise_23:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 37,
+      "clause": "rhasEuroMP(iUK, iKinnock)",
+      "rule": "input",
+      "source": "premise_27:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 85,
+      "clause": "risEuroMPFrom(iKinnock, iUK)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        28,
+        37
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V1": "iKinnock",
+        "l:V0": "iUK"
+      },
+      "depth": 1
+    },
+    {
+      "id": 225,
+      "clause": "~risEuroMPFrom(V0, V1) | cEuroMP(V0)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        25,
+        13
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V0": "r:V0"
+      },
+      "depth": 1
+    },
+    {
+      "id": 239,
+      "clause": "cEuroMP(iKinnock)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        225,
+        85
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V1": "iUK",
+        "l:V0": "iKinnock"
+      },
+      "depth": 2
+    },
+    {
+      "id": 245,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        239,
+        33
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 3
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 18.924,
+    "ocaml_allocated_bytes": 89382968,
+    "input_clauses": 52,
+    "generated_clauses": 476,
+    "kept_clauses": 245,
+    "selected_clauses": 73,
+    "literal_pair_checks": 496,
+    "redundant_clauses": 231,
+    "max_passive": 171,
+    "max_derivation_depth": 3,
+    "proof_steps": 9,
+    "process_wall_ms": 26.9962,
+    "peak_rss_bytes": 5537792
+  },
+  "problem": {
+    "premises": [
+      "( ! [A,B] : ( ( A = B & cEUCountry(A) ) => cEUCountry(B) ) )",
+      "( ! [A,B] : ( ( A = B & cEuroMP(A) ) => cEuroMP(B) ) )",
+      "( ! [A,B] : ( ( A = B & cEuropeanCountry(A) ) => cEuropeanCountry(B) ) )",
+      "( ! [A,B] : ( ( A = B & cPerson(A) ) => cPerson(B) ) )",
+      "( ! [A,B] : ( ( A = B & cowlNothing(A) ) => cowlNothing(B) ) )",
+      "( ! [A,B] : ( ( A = B & cowlThing(A) ) => cowlThing(B) ) )",
+      "( ! [A,B,C] : ( ( A = B & rhasEuroMP(A,C) ) => rhasEuroMP(B,C) ) )",
+      "( ! [A,B,C] : ( ( A = B & rhasEuroMP(C,A) ) => rhasEuroMP(C,B) ) )",
+      "( ! [A,B,C] : ( ( A = B & risEuroMPFrom(A,C) ) => risEuroMPFrom(B,C) ) )",
+      "( ! [A,B,C] : ( ( A = B & risEuroMPFrom(C,A) ) => risEuroMPFrom(C,B) ) )",
+      "( ! [A,B] : ( ( A = B & xsd_integer(A) ) => xsd_integer(B) ) )",
+      "( ! [A,B] : ( ( A = B & xsd_string(A) ) => xsd_string(B) ) )",
+      "( ! [X] : ( cowlThing(X) & ~ cowlNothing(X) ) )",
+      "( ! [X] : ( xsd_string(X) <=> ~ xsd_integer(X) ) )",
+      "( ! [X] : ( cEUCountry(X) <=> ( X = iPT | X = iBE | X = iNL | X = iES | X = iFR | X = iUK ) ) )",
+      "( ! [X] : ( cEuroMP(X) <=> ? [Y] : ( risEuroMPFrom(X,Y) & cowlThing(Y) ) ) )",
+      "( ! [X,Y] : ( rhasEuroMP(X,Y) => cEUCountry(X) ) )",
+      "( ! [X,Y] : ( risEuroMPFrom(X,Y) <=> rhasEuroMP(Y,X) ) )",
+      "( cEuropeanCountry(iBE) )",
+      "( cEuropeanCountry(iES) )",
+      "( cEuropeanCountry(iFR) )",
+      "( cPerson(iKinnock) )",
+      "( ~ cEuroMP(iKinnock) )",
+      "( cEuropeanCountry(iNL) )",
+      "( cEuropeanCountry(iPT) )",
+      "( cEuropeanCountry(iUK) )",
+      "( rhasEuroMP(iUK,iKinnock) )"
+    ],
+    "goal": "false",
+    "mode": "optimized",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

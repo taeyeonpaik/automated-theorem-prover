@@ -1,0 +1,10 @@
+04/09/26 - LCL452+1 LCL453+1 LCL454+1 LCL455+1 LCL456+1 LCL457+1 LCL458+1 LCL459+1 LCL460+1
+           LCL461+1 LCL523+1 LCL524+1 LCL525+1 LCL526+1 LCL527+1 LCL528+1 LCL529+1 LCL530+1
+           LCL531+1 LCL532+1 LCL533+1 LCL534+1 LCL535+1 LCL536+1 LCL537+1 LCL538+1 LCL539+1
+           LCL540+1 LCL541+1 LCL542+1 LCL543+1 LCL544+1 LCL545+1 LCL546+1 LCL547+1 LCL548+1
+           LCL549+1 LCL907+1 LCL911+1 LCL912+1 - No bug in the formulae, but the rating is
+           wrong because there was a bug in the Domain field of the header (you really want
+           to know why?).
+10/09/26 - SYN000+2 SYN000-2 SYN000^2 SYN000_2 - Removed theory(equality) as an inference parent
+12/09/26 - SYN000^2 - let_tuple_4 fixed to use ql
+16/09/26 - KRD180+1 - Corrected the conjecture

@@ -1,0 +1,125 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "baseline",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "~p",
+      "rule": "input",
+      "source": "premise_1:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 2,
+      "clause": "~q",
+      "rule": "input",
+      "source": "premise_2:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "r",
+      "rule": "input",
+      "source": "premise_3:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 6,
+      "clause": "~r | p | q",
+      "rule": "input",
+      "source": "premise_6:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 10,
+      "clause": "p | q",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        6,
+        3
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 14,
+      "clause": "p",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        10,
+        2
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 17,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        14,
+        1
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 3
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 0.071,
+    "ocaml_allocated_bytes": 205768,
+    "input_clauses": 6,
+    "generated_clauses": 21,
+    "kept_clauses": 17,
+    "selected_clauses": 14,
+    "literal_pair_checks": 488,
+    "redundant_clauses": 4,
+    "max_passive": 6,
+    "max_derivation_depth": 3,
+    "proof_steps": 7,
+    "process_wall_ms": 5.7227,
+    "peak_rss_bytes": 2965504
+  },
+  "problem": {
+    "premises": [
+      "( ~ p )",
+      "( ~ q )",
+      "( r )",
+      "( ~ r | a | b )",
+      "( ~ r | p | c | d )",
+      "( ~ r | p | q )"
+    ],
+    "goal": "false",
+    "mode": "baseline",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

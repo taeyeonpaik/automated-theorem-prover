@@ -1,0 +1,291 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "optimized",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "~number_of_routines(V0, V1, high) | ~number_of_routines(V0, V1, low)",
+      "rule": "input",
+      "source": "premise_1:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 2,
+      "clause": "~efficient_producer(V0) | ~founding_time(V0, V1) | ~organisation_at_time(V0, V1) | has_elaborated_routines(V0, V1)",
+      "rule": "input",
+      "source": "premise_2:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "~first_mover(V0) | ~founding_time(V0, V1) | ~organisation_at_time(V0, V1) | number_of_routines(V0, V1, low)",
+      "rule": "input",
+      "source": "premise_3:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 4,
+      "clause": "organisation_at_time(sk1, sk2)",
+      "rule": "input",
+      "source": "premise_4:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 5,
+      "clause": "founding_time(sk1, sk2)",
+      "rule": "input",
+      "source": "premise_5:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 6,
+      "clause": "number_of_routines(sk1, sk2, high)",
+      "rule": "input",
+      "source": "premise_6:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 7,
+      "clause": "~has_elaborated_routines(sk1, sk2)",
+      "rule": "input",
+      "source": "premise_7:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 8,
+      "clause": "~organisation_at_time(V0, V1) | efficient_producer(V0) | first_mover(V0)",
+      "rule": "input",
+      "source": "premise_8:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 9,
+      "clause": "~number_of_routines(sk1, sk2, low)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        6,
+        1
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "r:V1": "sk2",
+        "r:V0": "sk1"
+      },
+      "depth": 1
+    },
+    {
+      "id": 10,
+      "clause": "~efficient_producer(sk1) | ~founding_time(sk1, sk2) | has_elaborated_routines(sk1, sk2)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        2,
+        4
+      ],
+      "pivots": [
+        2,
+        0
+      ],
+      "substitution": {
+        "l:V1": "sk2",
+        "l:V0": "sk1"
+      },
+      "depth": 1
+    },
+    {
+      "id": 14,
+      "clause": "efficient_producer(sk1) | first_mover(sk1)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        8,
+        4
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V1": "sk2",
+        "l:V0": "sk1"
+      },
+      "depth": 1
+    },
+    {
+      "id": 16,
+      "clause": "~efficient_producer(sk1) | has_elaborated_routines(sk1, sk2)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        10,
+        5
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 24,
+      "clause": "~first_mover(sk1) | ~founding_time(sk1, sk2) | ~organisation_at_time(sk1, sk2)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        3,
+        9
+      ],
+      "pivots": [
+        3,
+        0
+      ],
+      "substitution": {
+        "l:V1": "sk2",
+        "l:V0": "sk1"
+      },
+      "depth": 2
+    },
+    {
+      "id": 26,
+      "clause": "~efficient_producer(sk1)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        16,
+        7
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {},
+      "depth": 3
+    },
+    {
+      "id": 30,
+      "clause": "first_mover(sk1)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        26,
+        14
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 4
+    },
+    {
+      "id": 35,
+      "clause": "~first_mover(sk1) | ~founding_time(sk1, sk2)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        24,
+        4
+      ],
+      "pivots": [
+        2,
+        0
+      ],
+      "substitution": {},
+      "depth": 3
+    },
+    {
+      "id": 43,
+      "clause": "~first_mover(sk1)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        35,
+        5
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {},
+      "depth": 4
+    },
+    {
+      "id": 57,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        43,
+        30
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 5
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 1.1311,
+    "ocaml_allocated_bytes": 4269312,
+    "input_clauses": 8,
+    "generated_clauses": 98,
+    "kept_clauses": 57,
+    "selected_clauses": 27,
+    "literal_pair_checks": 92,
+    "redundant_clauses": 41,
+    "max_passive": 29,
+    "max_derivation_depth": 5,
+    "proof_steps": 18,
+    "process_wall_ms": 11.0349,
+    "peak_rss_bytes": 5095424
+  },
+  "problem": {
+    "premises": [
+      "( ~ number_of_routines(A,B,low) | ~ number_of_routines(A,B,high) )",
+      "( ~ organisation_at_time(A,B) | ~ efficient_producer(A) | ~ founding_time(A,B) | has_elaborated_routines(A,B) )",
+      "( ~ organisation_at_time(A,B) | ~ first_mover(A) | ~ founding_time(A,B) | number_of_routines(A,B,low) )",
+      "( organisation_at_time(sk1,sk2) )",
+      "( founding_time(sk1,sk2) )",
+      "( number_of_routines(sk1,sk2,high) )",
+      "( ~ has_elaborated_routines(sk1,sk2) )",
+      "( ~ organisation_at_time(A,B) | first_mover(A) | efficient_producer(A) )"
+    ],
+    "goal": "false",
+    "mode": "optimized",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

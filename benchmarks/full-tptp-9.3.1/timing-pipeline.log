@@ -1,0 +1,106 @@
+Waiting for the full coverage evaluation before sequential timing.
+Coverage complete. Starting sequential paired measurements.
+Repetition 1/3: 25/590 problems
+Repetition 1/3: 50/590 problems
+Repetition 1/3: 75/590 problems
+Repetition 1/3: 100/590 problems
+Repetition 1/3: 125/590 problems
+Repetition 1/3: 150/590 problems
+Repetition 1/3: 175/590 problems
+Repetition 1/3: 200/590 problems
+Repetition 1/3: 225/590 problems
+Repetition 1/3: 250/590 problems
+Repetition 1/3: 275/590 problems
+Repetition 1/3: 300/590 problems
+Repetition 1/3: 325/590 problems
+Repetition 1/3: 350/590 problems
+Repetition 1/3: 375/590 problems
+Repetition 1/3: 400/590 problems
+Repetition 1/3: 425/590 problems
+Repetition 1/3: 450/590 problems
+Repetition 1/3: 475/590 problems
+Repetition 1/3: 500/590 problems
+Repetition 1/3: 525/590 problems
+Repetition 1/3: 550/590 problems
+Repetition 1/3: 575/590 problems
+Repetition 2/3: 25/590 problems
+Repetition 2/3: 50/590 problems
+Repetition 2/3: 75/590 problems
+Repetition 2/3: 100/590 problems
+Repetition 2/3: 125/590 problems
+Repetition 2/3: 150/590 problems
+Repetition 2/3: 175/590 problems
+Repetition 2/3: 200/590 problems
+Repetition 2/3: 225/590 problems
+Repetition 2/3: 250/590 problems
+Repetition 2/3: 275/590 problems
+Repetition 2/3: 300/590 problems
+Repetition 2/3: 325/590 problems
+Repetition 2/3: 350/590 problems
+Repetition 2/3: 375/590 problems
+Repetition 2/3: 400/590 problems
+Repetition 2/3: 425/590 problems
+Repetition 2/3: 450/590 problems
+Repetition 2/3: 475/590 problems
+Repetition 2/3: 500/590 problems
+Repetition 2/3: 525/590 problems
+Repetition 2/3: 550/590 problems
+Repetition 2/3: 575/590 problems
+Repetition 3/3: 25/590 problems
+Repetition 3/3: 50/590 problems
+Repetition 3/3: 75/590 problems
+Repetition 3/3: 100/590 problems
+Repetition 3/3: 125/590 problems
+Repetition 3/3: 150/590 problems
+Repetition 3/3: 175/590 problems
+Repetition 3/3: 200/590 problems
+Repetition 3/3: 225/590 problems
+Repetition 3/3: 250/590 problems
+Repetition 3/3: 275/590 problems
+Repetition 3/3: 300/590 problems
+Repetition 3/3: 325/590 problems
+Repetition 3/3: 350/590 problems
+Repetition 3/3: 375/590 problems
+Repetition 3/3: 400/590 problems
+Repetition 3/3: 425/590 problems
+Repetition 3/3: 450/590 problems
+Repetition 3/3: 475/590 problems
+Repetition 3/3: 500/590 problems
+Repetition 3/3: 525/590 problems
+Repetition 3/3: 550/590 problems
+Repetition 3/3: 575/590 problems
+{
+  "problems": 587,
+  "fields": {
+    "median_ms": {
+      "median": {
+        "baseline": 0.3641,
+        "optimized": 0.1822,
+        "reduction_percent": 49.958802526778356
+      },
+      "mean": {
+        "baseline": 49.095158432708686,
+        "optimized": 10.23976132879046,
+        "reduction_percent": 79.14303231585373
+      },
+      "median_per_problem_reduction_percent": 23.46089850249584,
+      "paired_reduction_denominator": 587
+    },
+    "median_pair_checks": {
+      "median": {
+        "baseline": 557,
+        "optimized": 15,
+        "reduction_percent": 97.30700179533214
+      },
+      "mean": {
+        "baseline": 356176.3730834753,
+        "optimized": 228.91652470187393,
+        "reduction_percent": 99.93572944698154
+      },
+      "median_per_problem_reduction_percent": 93.80279224473719,
+      "paired_reduction_denominator": 578
+    }
+  }
+}
+Integrity verified: 25928 full-pass rows and 1825 saved proof records.
+Full evaluation, sequential metrics and artifact checks are complete.

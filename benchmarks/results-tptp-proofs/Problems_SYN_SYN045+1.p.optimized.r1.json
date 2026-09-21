@@ -1,0 +1,134 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "optimized",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "p | q",
+      "rule": "input",
+      "source": "negated_goal:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 2,
+      "clause": "p | r",
+      "rule": "input",
+      "source": "negated_goal:6",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "~p",
+      "rule": "input",
+      "source": "negated_goal:11",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 4,
+      "clause": "~q | ~r",
+      "rule": "input",
+      "source": "negated_goal:24",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 5,
+      "clause": "q",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        3,
+        1
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 6,
+      "clause": "r",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        2,
+        3
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 9,
+      "clause": "~r",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        4,
+        5
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 12,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        9,
+        6
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 3
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 0.0679,
+    "ocaml_allocated_bytes": 191880,
+    "input_clauses": 24,
+    "generated_clauses": 32,
+    "kept_clauses": 12,
+    "selected_clauses": 7,
+    "literal_pair_checks": 8,
+    "redundant_clauses": 20,
+    "max_passive": 4,
+    "max_derivation_depth": 3,
+    "proof_steps": 8,
+    "process_wall_ms": 5.1492,
+    "peak_rss_bytes": 2932736
+  },
+  "problem": {
+    "premises": [],
+    "goal": "( ( p | ( q & r ) ) <=> ( ( p | q ) & ( p | r ) ) )",
+    "mode": "optimized",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

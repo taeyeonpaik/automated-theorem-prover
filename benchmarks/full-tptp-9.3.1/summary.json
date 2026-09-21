@@ -1,0 +1,86 @@
+{
+  "corpus": "All untyped FOF/CNF \u2014 TPTP 9.3.1",
+  "selected_problems": 17912,
+  "all_problems": 26990,
+  "seconds": 2.0,
+  "max_clauses": 5000,
+  "workers": 4,
+  "repeat": 1,
+  "source_byte_budget": 8388608,
+  "preflight_seconds": 15,
+  "manifest_sha256": "6192599bb5a05ab7bf0b214b234556bd6316c0b011eef468400308e1e41a4ef4",
+  "prover_sha256": "d250423c5e6d70902d583358a10eb06ac140be08f6db65d80372ede8eedbb02b",
+  "source_hashes": {
+    "src/clausify.ml": "b3f5fa4837a1c06bc81c5a44dc5ef1561378de4bdd1270f0b81a0e00f00e175d",
+    "src/inference.ml": "e9641029eb899b5380a2d2643e40b14f6614651ddfba29f7260c7dcb6efd4b85",
+    "src/main.ml": "4ecb47411515b4afaa460eefda8d87e7c00eed4f36ca213754e7ce718f20f7e7",
+    "src/parser.ml": "ac1076aa1591dcf0af570e44015cc21c3e4bbfea37acb61502b392fc72ac31eb",
+    "src/prover.ml": "f54b8c57b09c90925d14b83dd10abae2c2f172b9811b64210436ede67fbbf689",
+    "src/syntax.ml": "c92929df3de97b2930b532305f6845bcaf31c0e205f3906580ef901ba986ca3d",
+    "client.py": "4a70aba9dfdf440371a07374efeb704a7fea865f7c30036696f30c162ceff050",
+    "tptp.py": "d4c111ba22580c6b4ce6e47101b9b59e8d872277e9af558cec0d657c6aff54ef",
+    "evaluation.py": "2e8f4802a3a14d7f6b1a0aa33c3c6831acdda269699bef81bcb3930822791d53",
+    "full_evaluation.py": "3e8a57eca5e2037a947ed025550829d7136a263bcd6ba4074c2d10c1043b2b29"
+  },
+  "python": "3.13.7",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "ocaml": "5.5.1",
+  "updated_utc": "2026-09-21T04:13:55.661517+00:00",
+  "complete": true,
+  "preflight_completed": 17912,
+  "preflight_states": {
+    "unsupported": 4948,
+    "accepted": 12964
+  },
+  "completed_runs": 25928,
+  "summary": {
+    "baseline": {
+      "attempts": 12964,
+      "statuses": {
+        "unknown": 12309,
+        "proved": 599,
+        "not_entailed": 56
+      },
+      "correct": 655,
+      "correct_proofs": 599,
+      "correct_negative_decisions": 56,
+      "checked_proofs_including_unscored": 599,
+      "scored_selected": 17031,
+      "positive_selected": 14475,
+      "mismatches": 0,
+      "verification_failures": 0,
+      "peak_rss_bytes": 632602624
+    },
+    "optimized": {
+      "attempts": 12964,
+      "statuses": {
+        "unknown": 11666,
+        "proved": 1226,
+        "not_entailed": 72
+      },
+      "correct": 1297,
+      "correct_proofs": 1225,
+      "correct_negative_decisions": 72,
+      "checked_proofs_including_unscored": 1226,
+      "scored_selected": 17031,
+      "positive_selected": 14475,
+      "mismatches": 0,
+      "verification_failures": 0,
+      "peak_rss_bytes": 470843392
+    }
+  },
+  "unsupported_reasons": {
+    "Input is too large (500 premises / 64,000 characters maximum)": 3134,
+    "A TPTP symbol collides with a reserved QED keyword": 661,
+    "Source expansion exceeds benchmark byte budget": 554,
+    "Quoted formula symbols and distinct objects are not supported": 286,
+    "Duplicate formula name: initiates_all_defn": 1,
+    "Duplicate formula name: con1": 3,
+    "Repeated variable in a quantifier": 121,
+    "Reverse implication, XOR, NAND and NOR are not supported": 179,
+    "Duplicate formula name: reserved_2Eho_2Eeq__ext": 1,
+    "Duplicate formula name: reserved_2Eho_2Eboolext": 6,
+    "Only untyped fof, cnf, and local include records are supported": 2
+  },
+  "anomalies": []
+}

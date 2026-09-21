@@ -1,0 +1,241 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "baseline",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "~a_is_a_knight | ~b_is_a_knight",
+      "rule": "input",
+      "source": "premise_1:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 2,
+      "clause": "~a_is_a_knight | ~d_is_a_knight",
+      "rule": "input",
+      "source": "premise_2:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 5,
+      "clause": "~c_is_a_knight | ~d_is_a_knight",
+      "rule": "input",
+      "source": "premise_6:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 7,
+      "clause": "~d_is_a_knight | ~e_is_a_knight | c_is_a_knight",
+      "rule": "input",
+      "source": "premise_10:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 10,
+      "clause": "a_is_a_knight | c_is_a_knight | d_is_a_knight",
+      "rule": "input",
+      "source": "premise_13:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 12,
+      "clause": "a_is_a_knight | e_is_a_knight",
+      "rule": "input",
+      "source": "premise_16:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 13,
+      "clause": "~c_is_a_knight | a_is_a_knight",
+      "rule": "input",
+      "source": "premise_17:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 14,
+      "clause": "b_is_a_knight",
+      "rule": "input",
+      "source": "premise_18:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 16,
+      "clause": "~d_is_a_knight | ~e_is_a_knight",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        7,
+        5
+      ],
+      "pivots": [
+        2,
+        0
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 29,
+      "clause": "~d_is_a_knight | e_is_a_knight",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        12,
+        2
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 31,
+      "clause": "a_is_a_knight | d_is_a_knight",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        13,
+        10
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 36,
+      "clause": "~a_is_a_knight",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        14,
+        1
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 81,
+      "clause": "~d_is_a_knight",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        29,
+        16
+      ],
+      "pivots": [
+        1,
+        1
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 99,
+      "clause": "d_is_a_knight",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        36,
+        31
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 176,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        99,
+        81
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 3
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 4.4229,
+    "ocaml_allocated_bytes": 17714856,
+    "input_clauses": 18,
+    "generated_clauses": 3210,
+    "kept_clauses": 176,
+    "selected_clauses": 99,
+    "literal_pair_checks": 36085,
+    "redundant_clauses": 3034,
+    "max_passive": 90,
+    "max_derivation_depth": 3,
+    "proof_steps": 15,
+    "process_wall_ms": 9.1894,
+    "peak_rss_bytes": 5144576
+  },
+  "problem": {
+    "premises": [
+      "( ~ a_is_a_knight | ~ b_is_a_knight )",
+      "( ~ a_is_a_knight | ~ d_is_a_knight )",
+      "( ~ b_is_a_knight | ~ a_is_a_knight )",
+      "( b_is_a_knight | a_is_a_knight )",
+      "( ~ b_is_a_knight | c_is_a_knight | d_is_a_knight )",
+      "( ~ c_is_a_knight | ~ d_is_a_knight )",
+      "( ~ d_is_a_knight | ~ a_is_a_knight )",
+      "( ~ d_is_a_knight | b_is_a_knight )",
+      "( ~ d_is_a_knight | ~ c_is_a_knight )",
+      "( ~ e_is_a_knight | ~ d_is_a_knight | c_is_a_knight )",
+      "( e_is_a_knight | d_is_a_knight )",
+      "( e_is_a_knight | ~ c_is_a_knight )",
+      "( d_is_a_knight | a_is_a_knight | c_is_a_knight )",
+      "( d_is_a_knight | ~ b_is_a_knight | c_is_a_knight )",
+      "( ~ a_is_a_knight | ~ e_is_a_knight | c_is_a_knight )",
+      "( a_is_a_knight | e_is_a_knight )",
+      "( a_is_a_knight | ~ c_is_a_knight )",
+      "( b_is_a_knight )"
+    ],
+    "goal": "false",
+    "mode": "baseline",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

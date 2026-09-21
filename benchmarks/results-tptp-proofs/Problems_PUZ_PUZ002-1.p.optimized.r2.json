@@ -1,0 +1,359 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "optimized",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "~in_house(V0) | cat(V0)",
+      "rule": "input",
+      "source": "premise_1:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 2,
+      "clause": "~gazer(V0) | suitable_pet(V0)",
+      "rule": "input",
+      "source": "premise_2:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "~detested(V0) | avoided(V0)",
+      "rule": "input",
+      "source": "premise_3:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 4,
+      "clause": "~carnivore(V0) | prowler(V0)",
+      "rule": "input",
+      "source": "premise_4:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 5,
+      "clause": "~cat(V0) | mouse_killer(V0)",
+      "rule": "input",
+      "source": "premise_5:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 6,
+      "clause": "~takes_to_me(V0) | in_house(V0)",
+      "rule": "input",
+      "source": "premise_6:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 7,
+      "clause": "~kangaroo(V0) | ~suitable_pet(V0)",
+      "rule": "input",
+      "source": "premise_7:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 8,
+      "clause": "~mouse_killer(V0) | carnivore(V0)",
+      "rule": "input",
+      "source": "premise_8:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 9,
+      "clause": "detested(V0) | takes_to_me(V0)",
+      "rule": "input",
+      "source": "premise_9:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 10,
+      "clause": "~prowler(V0) | gazer(V0)",
+      "rule": "input",
+      "source": "premise_10:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 11,
+      "clause": "kangaroo(the_kangaroo)",
+      "rule": "input",
+      "source": "premise_11:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 12,
+      "clause": "~avoided(the_kangaroo)",
+      "rule": "input",
+      "source": "premise_12:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 13,
+      "clause": "~detested(the_kangaroo)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        3,
+        12
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {
+        "l:V0": "the_kangaroo"
+      },
+      "depth": 1
+    },
+    {
+      "id": 17,
+      "clause": "~suitable_pet(the_kangaroo)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        7,
+        11
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V0": "the_kangaroo"
+      },
+      "depth": 1
+    },
+    {
+      "id": 20,
+      "clause": "~gazer(the_kangaroo)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        17,
+        2
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {
+        "r:V0": "the_kangaroo"
+      },
+      "depth": 2
+    },
+    {
+      "id": 23,
+      "clause": "takes_to_me(the_kangaroo)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        9,
+        13
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V0": "the_kangaroo"
+      },
+      "depth": 2
+    },
+    {
+      "id": 24,
+      "clause": "in_house(the_kangaroo)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        23,
+        6
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "r:V0": "the_kangaroo"
+      },
+      "depth": 3
+    },
+    {
+      "id": 27,
+      "clause": "~prowler(the_kangaroo)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        10,
+        20
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {
+        "l:V0": "the_kangaroo"
+      },
+      "depth": 3
+    },
+    {
+      "id": 28,
+      "clause": "cat(the_kangaroo)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        24,
+        1
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "r:V0": "the_kangaroo"
+      },
+      "depth": 4
+    },
+    {
+      "id": 29,
+      "clause": "~carnivore(the_kangaroo)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        27,
+        4
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {
+        "r:V0": "the_kangaroo"
+      },
+      "depth": 4
+    },
+    {
+      "id": 30,
+      "clause": "mouse_killer(the_kangaroo)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        28,
+        5
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "r:V0": "the_kangaroo"
+      },
+      "depth": 5
+    },
+    {
+      "id": 31,
+      "clause": "~mouse_killer(the_kangaroo)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        29,
+        8
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {
+        "r:V0": "the_kangaroo"
+      },
+      "depth": 5
+    },
+    {
+      "id": 37,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        31,
+        30
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 6
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 0.2148,
+    "ocaml_allocated_bytes": 797480,
+    "input_clauses": 12,
+    "generated_clauses": 38,
+    "kept_clauses": 37,
+    "selected_clauses": 23,
+    "literal_pair_checks": 26,
+    "redundant_clauses": 1,
+    "max_passive": 13,
+    "max_derivation_depth": 6,
+    "proof_steps": 23,
+    "process_wall_ms": 5.4941,
+    "peak_rss_bytes": 3686400
+  },
+  "problem": {
+    "premises": [
+      "( ~ in_house(Cat) | cat(Cat) )",
+      "( ~ gazer(Gazer) | suitable_pet(Gazer) )",
+      "( ~ detested(Detested) | avoided(Detested) )",
+      "( ~ carnivore(Carnivore) | prowler(Carnivore) )",
+      "( ~ cat(Cat) | mouse_killer(Cat) )",
+      "( ~ takes_to_me(Taken_animal) | in_house(Taken_animal) )",
+      "( ~ kangaroo(Kangaroo) | ~ suitable_pet(Kangaroo) )",
+      "( ~ mouse_killer(Killer) | carnivore(Killer) )",
+      "( takes_to_me(Animal) | detested(Animal) )",
+      "( ~ prowler(Prowler) | gazer(Prowler) )",
+      "( kangaroo(the_kangaroo) )",
+      "( ~ avoided(the_kangaroo) )"
+    ],
+    "goal": "false",
+    "mode": "optimized",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

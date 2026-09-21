@@ -1,0 +1,313 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "optimized",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "~dated | on_blue_paper",
+      "rule": "input",
+      "source": "premise_1:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "~in_black_ink | in_third_person",
+      "rule": "input",
+      "source": "premise_3:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 4,
+      "clause": "~can_be_read | ~filed",
+      "rule": "input",
+      "source": "premise_4:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 5,
+      "clause": "~on_one_sheet | dated",
+      "rule": "input",
+      "source": "premise_5:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 6,
+      "clause": "crossed | in_black_ink",
+      "rule": "input",
+      "source": "premise_6:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 7,
+      "clause": "~by_brown | begins_with_dear_sir",
+      "rule": "input",
+      "source": "premise_7:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 8,
+      "clause": "~on_blue_paper | filed",
+      "rule": "input",
+      "source": "premise_8:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 9,
+      "clause": "~crossed | on_one_sheet",
+      "rule": "input",
+      "source": "premise_9:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 10,
+      "clause": "~begins_with_dear_sir | ~in_third_person",
+      "rule": "input",
+      "source": "premise_10:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 11,
+      "clause": "by_brown",
+      "rule": "input",
+      "source": "premise_11:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 12,
+      "clause": "can_be_read",
+      "rule": "input",
+      "source": "premise_12:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 13,
+      "clause": "~filed",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        4,
+        12
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 16,
+      "clause": "begins_with_dear_sir",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        7,
+        11
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 19,
+      "clause": "~on_blue_paper",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        8,
+        13
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 20,
+      "clause": "~dated",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        19,
+        1
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {},
+      "depth": 3
+    },
+    {
+      "id": 21,
+      "clause": "~on_one_sheet",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        20,
+        5
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {},
+      "depth": 4
+    },
+    {
+      "id": 24,
+      "clause": "~crossed",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        9,
+        21
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {},
+      "depth": 5
+    },
+    {
+      "id": 25,
+      "clause": "in_black_ink",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        24,
+        6
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 6
+    },
+    {
+      "id": 26,
+      "clause": "in_third_person",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        25,
+        3
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 7
+    },
+    {
+      "id": 29,
+      "clause": "~in_third_person",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        10,
+        16
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 32,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        29,
+        26
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 8
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 0.124,
+    "ocaml_allocated_bytes": 488896,
+    "input_clauses": 12,
+    "generated_clauses": 38,
+    "kept_clauses": 32,
+    "selected_clauses": 22,
+    "literal_pair_checks": 26,
+    "redundant_clauses": 6,
+    "max_passive": 12,
+    "max_derivation_depth": 8,
+    "proof_steps": 21,
+    "process_wall_ms": 5.2868,
+    "peak_rss_bytes": 3325952
+  },
+  "problem": {
+    "premises": [
+      "( ~ dated | on_blue_paper )",
+      "( ~ in_third_person | in_black_ink )",
+      "( in_third_person | ~ in_black_ink )",
+      "( ~ can_be_read | ~ filed )",
+      "( ~ on_one_sheet | dated )",
+      "( crossed | in_black_ink )",
+      "( ~ by_brown | begins_with_dear_sir )",
+      "( ~ on_blue_paper | filed )",
+      "( on_one_sheet | ~ crossed )",
+      "( ~ begins_with_dear_sir | ~ in_third_person )",
+      "( by_brown )",
+      "( can_be_read )"
+    ],
+    "goal": "false",
+    "mode": "optimized",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

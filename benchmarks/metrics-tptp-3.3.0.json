@@ -1,0 +1,362 @@
+{
+  "corpus": "QED TPTP 64 \u2014 TPTP 3.3.0",
+  "complete": true,
+  "repeat": 3,
+  "source_report_sha256": "d00694e68182bf380746ae8f19aee24cc4926eea04c15766ed491fcd5554c2eb",
+  "method": "median of per-problem medians; identical common-solved positive cohort",
+  "aggregate": {
+    "problems": 20,
+    "fields": {
+      "median_ms": {
+        "median": {
+          "baseline": 0.29505000000000003,
+          "optimized": 0.14605,
+          "reduction_percent": 50.49991526859854
+        },
+        "mean": {
+          "baseline": 3.9184099999999997,
+          "optimized": 0.67352,
+          "reduction_percent": 82.8113954384559
+        },
+        "median_per_problem_reduction_percent": 47.54830948936486,
+        "paired_reduction_denominator": 20
+      },
+      "median_pair_checks": {
+        "median": {
+          "baseline": 1577.5,
+          "optimized": 25.5,
+          "reduction_percent": 98.38351822503962
+        },
+        "mean": {
+          "baseline": 23221.75,
+          "optimized": 57.05,
+          "reduction_percent": 99.75432514776018
+        },
+        "median_per_problem_reduction_percent": 98.29564098766723,
+        "paired_reduction_denominator": 20
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "name": "Problems/SYN/SYN001+1.p",
+      "median_ms": {
+        "baseline": 0.0191,
+        "optimized": 0.0191
+      },
+      "median_pair_checks": {
+        "baseline": 3,
+        "optimized": 1
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 2752512,
+        "optimized": 2752512
+      },
+      "speedup": 1.0
+    },
+    {
+      "name": "Problems/SYN/SYN040+1.p",
+      "median_ms": {
+        "baseline": 0.0319,
+        "optimized": 0.031
+      },
+      "median_pair_checks": {
+        "baseline": 25,
+        "optimized": 3
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 2801664,
+        "optimized": 2801664
+      },
+      "speedup": 1.0290322580645161
+    },
+    {
+      "name": "Problems/SYN/SYN041+1.p",
+      "median_ms": {
+        "baseline": 0.0191,
+        "optimized": 0.0191
+      },
+      "median_pair_checks": {
+        "baseline": 5,
+        "optimized": 1
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 2752512,
+        "optimized": 2752512
+      },
+      "speedup": 1.0
+    },
+    {
+      "name": "Problems/SYN/SYN044+1.p",
+      "median_ms": {
+        "baseline": 0.107,
+        "optimized": 0.1121
+      },
+      "median_pair_checks": {
+        "baseline": 452,
+        "optimized": 60
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 3145728,
+        "optimized": 3178496
+      },
+      "speedup": 0.9545049063336306
+    },
+    {
+      "name": "Problems/SYN/SYN045+1.p",
+      "median_ms": {
+        "baseline": 0.1378,
+        "optimized": 0.0679
+      },
+      "median_pair_checks": {
+        "baseline": 461,
+        "optimized": 8
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 3194880,
+        "optimized": 2932736
+      },
+      "speedup": 2.0294550810014726
+    },
+    {
+      "name": "Problems/SYN/SYN046+1.p",
+      "median_ms": {
+        "baseline": 0.035,
+        "optimized": 0.0291
+      },
+      "median_pair_checks": {
+        "baseline": 25,
+        "optimized": 3
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 2818048,
+        "optimized": 2801664
+      },
+      "speedup": 1.202749140893471
+    },
+    {
+      "name": "Problems/SYN/SYN047+1.p",
+      "median_ms": {
+        "baseline": 1.729,
+        "optimized": 0.1781
+      },
+      "median_pair_checks": {
+        "baseline": 11504,
+        "optimized": 32
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 5046272,
+        "optimized": 3407872
+      },
+      "speedup": 9.708029197080291
+    },
+    {
+      "name": "Problems/SYN/SYN048+1.p",
+      "median_ms": {
+        "baseline": 0.0181,
+        "optimized": 0.0191
+      },
+      "median_pair_checks": {
+        "baseline": 3,
+        "optimized": 1
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 2752512,
+        "optimized": 2752512
+      },
+      "speedup": 0.9476439790575918
+    },
+    {
+      "name": "Problems/SYN/SYN006-1.p",
+      "median_ms": {
+        "baseline": 0.4392,
+        "optimized": 0.2341
+      },
+      "median_pair_checks": {
+        "baseline": 1661,
+        "optimized": 16
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 4259840,
+        "optimized": 3391488
+      },
+      "speedup": 1.876121315677061
+    },
+    {
+      "name": "Problems/SYN/SYN008-1.p",
+      "median_ms": {
+        "baseline": 0.071,
+        "optimized": 0.0591
+      },
+      "median_pair_checks": {
+        "baseline": 488,
+        "optimized": 9
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 2965504,
+        "optimized": 2916352
+      },
+      "speedup": 1.2013536379018612
+    },
+    {
+      "name": "Problems/SYN/SYN009-1.p",
+      "median_ms": {
+        "baseline": 10.35,
+        "optimized": 1.142
+      },
+      "median_pair_checks": {
+        "baseline": 172761,
+        "optimized": 51
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 5357568,
+        "optimized": 5079040
+      },
+      "speedup": 9.063047285464098
+    },
+    {
+      "name": "Problems/SYN/SYN011-1.p",
+      "median_ms": {
+        "baseline": 2.9101,
+        "optimized": 0.3979
+      },
+      "median_pair_checks": {
+        "baseline": 32828,
+        "optimized": 72
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 5128192,
+        "optimized": 4292608
+      },
+      "speedup": 7.31364664488565
+    },
+    {
+      "name": "Problems/SYN/SYN028-1.p",
+      "median_ms": {
+        "baseline": 0.1919,
+        "optimized": 0.0999
+      },
+      "median_pair_checks": {
+        "baseline": 1494,
+        "optimized": 25
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 3457024,
+        "optimized": 3129344
+      },
+      "speedup": 1.9209209209209208
+    },
+    {
+      "name": "Problems/PUZ/PUZ060+1.p",
+      "median_ms": {
+        "baseline": 0.272,
+        "optimized": 0.2179
+      },
+      "median_pair_checks": {
+        "baseline": 1276,
+        "optimized": 32
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 3702784,
+        "optimized": 3522560
+      },
+      "speedup": 1.2482790270766406
+    },
+    {
+      "name": "Problems/PUZ/PUZ061+1.p",
+      "median_ms": {
+        "baseline": 0.3181,
+        "optimized": 0.1681
+      },
+      "median_pair_checks": {
+        "baseline": 1831,
+        "optimized": 21
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 3932160,
+        "optimized": 3325952
+      },
+      "speedup": 1.892325996430696
+    },
+    {
+      "name": "Problems/PUZ/PUZ002-1.p",
+      "median_ms": {
+        "baseline": 0.8621,
+        "optimized": 0.2148
+      },
+      "median_pair_checks": {
+        "baseline": 5616,
+        "optimized": 26
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 5079040,
+        "optimized": 3686400
+      },
+      "speedup": 4.013500931098696
+    },
+    {
+      "name": "Problems/PUZ/PUZ004-1.p",
+      "median_ms": {
+        "baseline": 0.4702,
+        "optimized": 0.124
+      },
+      "median_pair_checks": {
+        "baseline": 4147,
+        "optimized": 26
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 4587520,
+        "optimized": 3342336
+      },
+      "speedup": 3.791935483870968
+    },
+    {
+      "name": "Problems/PUZ/PUZ008-1.p",
+      "median_ms": {
+        "baseline": 43.5939,
+        "optimized": 8.9681
+      },
+      "median_pair_checks": {
+        "baseline": 8540,
+        "optimized": 590
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 8077312,
+        "optimized": 5488640
+      },
+      "speedup": 4.860996197633836
+    },
+    {
+      "name": "Problems/PUZ/PUZ009-1.p",
+      "median_ms": {
+        "baseline": 4.5919,
+        "optimized": 0.2379
+      },
+      "median_pair_checks": {
+        "baseline": 36085,
+        "optimized": 72
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 5144576,
+        "optimized": 3784704
+      },
+      "speedup": 19.30180748213535
+    },
+    {
+      "name": "Problems/MGT/MGT041-2.p",
+      "median_ms": {
+        "baseline": 12.2008,
+        "optimized": 1.1311
+      },
+      "median_pair_checks": {
+        "baseline": 185230,
+        "optimized": 92
+      },
+      "median_peak_rss_bytes": {
+        "baseline": 5357568,
+        "optimized": 5111808
+      },
+      "speedup": 10.78666784546017
+    }
+  ]
+}

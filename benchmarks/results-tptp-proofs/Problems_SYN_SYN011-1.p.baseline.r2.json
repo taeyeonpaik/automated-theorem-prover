@@ -1,0 +1,231 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "baseline",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "~n | ~t",
+      "rule": "input",
+      "source": "premise_1:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 2,
+      "clause": "m | n | q",
+      "rule": "input",
+      "source": "premise_2:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "~m | l",
+      "rule": "input",
+      "source": "premise_3:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 4,
+      "clause": "~q | l",
+      "rule": "input",
+      "source": "premise_4:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 5,
+      "clause": "~l | ~p",
+      "rule": "input",
+      "source": "premise_5:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 6,
+      "clause": "n | p | r",
+      "rule": "input",
+      "source": "premise_6:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 7,
+      "clause": "~l | ~r",
+      "rule": "input",
+      "source": "premise_7:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 8,
+      "clause": "t",
+      "rule": "input",
+      "source": "premise_8:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 10,
+      "clause": "l | n | q",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        3,
+        2
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 14,
+      "clause": "~l | n | r",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        6,
+        5
+      ],
+      "pivots": [
+        1,
+        1
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 19,
+      "clause": "~n",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        8,
+        1
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 25,
+      "clause": "l | n",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        10,
+        4
+      ],
+      "pivots": [
+        2,
+        0
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 35,
+      "clause": "~l | n",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        14,
+        7
+      ],
+      "pivots": [
+        2,
+        1
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 97,
+      "clause": "n",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        35,
+        25
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 3
+    },
+    {
+      "id": 201,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        97,
+        19
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 4
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 3.0091,
+    "ocaml_allocated_bytes": 11347168,
+    "input_clauses": 8,
+    "generated_clauses": 1553,
+    "kept_clauses": 201,
+    "selected_clauses": 97,
+    "literal_pair_checks": 32828,
+    "redundant_clauses": 1352,
+    "max_passive": 109,
+    "max_derivation_depth": 4,
+    "proof_steps": 15,
+    "process_wall_ms": 7.6795,
+    "peak_rss_bytes": 5144576
+  },
+  "problem": {
+    "premises": [
+      "( ~ n | ~ t )",
+      "( m | q | n )",
+      "( l | ~ m )",
+      "( l | ~ q )",
+      "( ~ l | ~ p )",
+      "( r | p | n )",
+      "( ~ r | ~ l )",
+      "( t )"
+    ],
+    "goal": "false",
+    "mode": "baseline",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

@@ -1,0 +1,313 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "baseline",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "~dated | on_blue_paper",
+      "rule": "input",
+      "source": "premise_1:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "~in_black_ink | in_third_person",
+      "rule": "input",
+      "source": "premise_3:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 4,
+      "clause": "~can_be_read | ~filed",
+      "rule": "input",
+      "source": "premise_4:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 5,
+      "clause": "~on_one_sheet | dated",
+      "rule": "input",
+      "source": "premise_5:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 6,
+      "clause": "crossed | in_black_ink",
+      "rule": "input",
+      "source": "premise_6:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 7,
+      "clause": "~by_brown | begins_with_dear_sir",
+      "rule": "input",
+      "source": "premise_7:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 8,
+      "clause": "~on_blue_paper | filed",
+      "rule": "input",
+      "source": "premise_8:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 9,
+      "clause": "~crossed | on_one_sheet",
+      "rule": "input",
+      "source": "premise_9:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 10,
+      "clause": "~begins_with_dear_sir | ~in_third_person",
+      "rule": "input",
+      "source": "premise_10:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 11,
+      "clause": "by_brown",
+      "rule": "input",
+      "source": "premise_11:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 12,
+      "clause": "can_be_read",
+      "rule": "input",
+      "source": "premise_12:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 13,
+      "clause": "~on_one_sheet | on_blue_paper",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        5,
+        1
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 14,
+      "clause": "crossed | in_third_person",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        6,
+        3
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 15,
+      "clause": "~can_be_read | ~on_blue_paper",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        8,
+        4
+      ],
+      "pivots": [
+        1,
+        1
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 21,
+      "clause": "begins_with_dear_sir",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        11,
+        7
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 23,
+      "clause": "~crossed | on_blue_paper",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        13,
+        9
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 25,
+      "clause": "~begins_with_dear_sir | crossed",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        14,
+        10
+      ],
+      "pivots": [
+        1,
+        1
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 28,
+      "clause": "~on_blue_paper",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        15,
+        12
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 45,
+      "clause": "crossed",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        25,
+        21
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 3
+    },
+    {
+      "id": 51,
+      "clause": "~crossed",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        28,
+        23
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {},
+      "depth": 3
+    },
+    {
+      "id": 67,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        51,
+        45
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 4
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 0.4821,
+    "ocaml_allocated_bytes": 1744520,
+    "input_clauses": 12,
+    "generated_clauses": 193,
+    "kept_clauses": 67,
+    "selected_clauses": 51,
+    "literal_pair_checks": 4147,
+    "redundant_clauses": 126,
+    "max_passive": 23,
+    "max_derivation_depth": 4,
+    "proof_steps": 21,
+    "process_wall_ms": 5.002,
+    "peak_rss_bytes": 4587520
+  },
+  "problem": {
+    "premises": [
+      "( ~ dated | on_blue_paper )",
+      "( ~ in_third_person | in_black_ink )",
+      "( in_third_person | ~ in_black_ink )",
+      "( ~ can_be_read | ~ filed )",
+      "( ~ on_one_sheet | dated )",
+      "( crossed | in_black_ink )",
+      "( ~ by_brown | begins_with_dear_sir )",
+      "( ~ on_blue_paper | filed )",
+      "( on_one_sheet | ~ crossed )",
+      "( ~ begins_with_dear_sir | ~ in_third_person )",
+      "( by_brown )",
+      "( can_be_read )"
+    ],
+    "goal": "false",
+    "mode": "baseline",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

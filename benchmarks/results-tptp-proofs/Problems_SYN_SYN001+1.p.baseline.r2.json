@@ -1,0 +1,66 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "baseline",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "p",
+      "rule": "input",
+      "source": "negated_goal:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 2,
+      "clause": "~p",
+      "rule": "input",
+      "source": "negated_goal:4",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        2,
+        1
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 1
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 0.0191,
+    "ocaml_allocated_bytes": 27112,
+    "input_clauses": 4,
+    "generated_clauses": 5,
+    "kept_clauses": 3,
+    "selected_clauses": 2,
+    "literal_pair_checks": 3,
+    "redundant_clauses": 2,
+    "max_passive": 2,
+    "max_derivation_depth": 1,
+    "proof_steps": 3,
+    "process_wall_ms": 4.8517,
+    "peak_rss_bytes": 2736128
+  },
+  "problem": {
+    "premises": [],
+    "goal": "( ~ ~ p <=> p )",
+    "mode": "baseline",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

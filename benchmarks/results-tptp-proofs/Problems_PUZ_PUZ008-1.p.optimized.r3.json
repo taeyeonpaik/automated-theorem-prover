@@ -1,0 +1,120 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "optimized",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 5,
+      "clause": "~achievable(west(m(s(V0)), c(V1)), boatonwest, east(m(V2), c(V3))) | achievable(west(m(V0), c(V1)), boatoneast, east(m(s(V2)), c(V3)))",
+      "rule": "input",
+      "source": "premise_5:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 13,
+      "clause": "achievable(west(V0, V1), V2, east(m(s(V3)), c(s(s(V3)))))",
+      "rule": "input",
+      "source": "premise_13:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 16,
+      "clause": "~achievable(west(m(n0), c(n0)), V0, east(m(s(s(s(n0)))), c(s(s(s(n0))))))",
+      "rule": "input",
+      "source": "premise_16:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 43,
+      "clause": "achievable(west(m(V0), c(V1)), boatoneast, east(m(s(s(V2))), c(s(s(V2)))))",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        5,
+        13
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V3": "s(s(r:V3))",
+        "l:V2": "s(r:V3)",
+        "r:V2": "boatonwest",
+        "r:V1": "c(l:V1)",
+        "r:V0": "m(s(l:V0))"
+      },
+      "depth": 1
+    },
+    {
+      "id": 124,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        16,
+        43
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "r:V2": "s(n0)",
+        "l:V0": "boatoneast",
+        "r:V1": "n0",
+        "r:V0": "n0"
+      },
+      "depth": 2
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 9.9821,
+    "ocaml_allocated_bytes": 37418784,
+    "input_clauses": 16,
+    "generated_clauses": 317,
+    "kept_clauses": 124,
+    "selected_clauses": 56,
+    "literal_pair_checks": 590,
+    "redundant_clauses": 193,
+    "max_passive": 67,
+    "max_derivation_depth": 6,
+    "proof_steps": 5,
+    "process_wall_ms": 15.6932,
+    "peak_rss_bytes": 5488640
+  },
+  "problem": {
+    "premises": [
+      "( ~ achievable(west(m(X),c(s(Y))),boatonwest,east(m(Z),c(W))) | achievable(west(m(X),c(Y)),boatoneast,east(m(Z),c(s(W)))) )",
+      "( ~ achievable(west(m(X),c(Y)),boatoneast,east(m(Z),c(s(W)))) | achievable(west(m(X),c(s(Y))),boatonwest,east(m(Z),c(W))) )",
+      "( ~ achievable(west(m(X),c(s(s(Y)))),boatonwest,east(m(Z),c(W))) | achievable(west(m(X),c(Y)),boatoneast,east(m(Z),c(s(s(W))))) )",
+      "( ~ achievable(west(m(X),c(Y)),boatoneast,east(m(Z),c(s(s(W))))) | achievable(west(m(X),c(s(s(Y)))),boatonwest,east(m(Z),c(W))) )",
+      "( ~ achievable(west(m(s(X)),c(Y)),boatonwest,east(m(Z),c(W))) | achievable(west(m(X),c(Y)),boatoneast,east(m(s(Z)),c(W))) )",
+      "( ~ achievable(west(m(X),c(Y)),boatoneast,east(m(s(Z)),c(W))) | achievable(west(m(s(X)),c(Y)),boatonwest,east(m(Z),c(W))) )",
+      "( ~ achievable(west(m(s(s(X))),c(Y)),boatonwest,east(m(Z),c(W))) | achievable(west(m(X),c(Y)),boatoneast,east(m(s(s(Z))),c(W))) )",
+      "( ~ achievable(west(m(X),c(Y)),boatoneast,east(m(s(s(Z))),c(W))) | achievable(west(m(s(s(X))),c(Y)),boatonwest,east(m(Z),c(W))) )",
+      "( ~ achievable(west(m(s(X)),c(s(Y))),boatonwest,east(m(Z),c(W))) | achievable(west(m(X),c(Y)),boatoneast,east(m(s(Z)),c(s(W)))) )",
+      "( ~ achievable(west(m(X),c(Y)),boatoneast,east(m(s(Z)),c(s(W)))) | achievable(west(m(s(X)),c(s(Y))),boatonwest,east(m(Z),c(W))) )",
+      "( achievable(west(m(s(X)),c(s(s(X)))),Y,east(Z,W)) )",
+      "( achievable(west(m(s(X)),c(s(s(s(X))))),Y,east(Z,W)) )",
+      "( achievable(west(X,Y),Z,east(m(s(W)),c(s(s(W))))) )",
+      "( achievable(west(X,Y),Z,east(m(s(W)),c(s(s(s(W)))))) )",
+      "( achievable(west(m(s(s(s(n0)))),c(s(s(s(n0))))),boatonwest,east(m(n0),c(n0))) )",
+      "( ~ achievable(west(m(n0),c(n0)),X,east(m(s(s(s(n0)))),c(s(s(s(n0)))))) )"
+    ],
+    "goal": "false",
+    "mode": "optimized",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

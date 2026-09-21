@@ -1,0 +1,68 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "optimized",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "big_f(V0)",
+      "rule": "input",
+      "source": "negated_goal:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 2,
+      "clause": "~big_f(sk2(V0))",
+      "rule": "input",
+      "source": "negated_goal:2",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        2,
+        1
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "r:V0": "sk2(l:V0)"
+      },
+      "depth": 1
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 0.0191,
+    "ocaml_allocated_bytes": 23392,
+    "input_clauses": 2,
+    "generated_clauses": 3,
+    "kept_clauses": 3,
+    "selected_clauses": 2,
+    "literal_pair_checks": 1,
+    "redundant_clauses": 0,
+    "max_passive": 2,
+    "max_derivation_depth": 1,
+    "proof_steps": 3,
+    "process_wall_ms": 4.8052,
+    "peak_rss_bytes": 2752512
+  },
+  "problem": {
+    "premises": [],
+    "goal": "( ? [Y] : ! [X] : ( big_f(Y) => big_f(X) ) )",
+    "mode": "optimized",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

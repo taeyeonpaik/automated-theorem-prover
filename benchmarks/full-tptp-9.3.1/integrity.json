@@ -1,0 +1,8 @@
+{
+  "complete": true,
+  "full_pass_rows": 25928,
+  "full_pass_proof_records": 1825,
+  "sequential_timing_rows": 3540,
+  "all_saved_proof_hashes_verified": true,
+  "sqlite_integrity": "ok"
+}

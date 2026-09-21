@@ -1,0 +1,335 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "optimized",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 2,
+      "clause": "lives(butler)",
+      "rule": "input",
+      "source": "premise_2:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 4,
+      "clause": "~killed(V0, V1) | ~richer(V0, V1)",
+      "rule": "input",
+      "source": "premise_4:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 5,
+      "clause": "~hates(agatha, V0) | ~hates(charles, V0)",
+      "rule": "input",
+      "source": "premise_5:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 6,
+      "clause": "~hates(V0, agatha) | ~hates(V0, butler) | ~hates(V0, charles)",
+      "rule": "input",
+      "source": "premise_6:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 7,
+      "clause": "hates(agatha, agatha)",
+      "rule": "input",
+      "source": "premise_7:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 8,
+      "clause": "hates(agatha, charles)",
+      "rule": "input",
+      "source": "premise_8:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 9,
+      "clause": "~killed(V0, V1) | hates(V0, V1)",
+      "rule": "input",
+      "source": "premise_9:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 10,
+      "clause": "~hates(agatha, V0) | hates(butler, V0)",
+      "rule": "input",
+      "source": "premise_10:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 11,
+      "clause": "~lives(V0) | hates(butler, V0) | richer(V0, agatha)",
+      "rule": "input",
+      "source": "premise_11:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 12,
+      "clause": "killed(butler, agatha) | killed(charles, agatha)",
+      "rule": "input",
+      "source": "premise_12:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 13,
+      "clause": "~hates(charles, agatha)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        5,
+        7
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V0": "agatha"
+      },
+      "depth": 1
+    },
+    {
+      "id": 17,
+      "clause": "~killed(charles, agatha)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        13,
+        9
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {
+        "r:V1": "agatha",
+        "r:V0": "charles"
+      },
+      "depth": 2
+    },
+    {
+      "id": 27,
+      "clause": "hates(butler, agatha)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        10,
+        7
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V0": "agatha"
+      },
+      "depth": 1
+    },
+    {
+      "id": 28,
+      "clause": "hates(butler, charles)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        10,
+        8
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "l:V0": "charles"
+      },
+      "depth": 1
+    },
+    {
+      "id": 30,
+      "clause": "~hates(butler, butler) | ~hates(butler, charles)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        27,
+        6
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "r:V0": "butler"
+      },
+      "depth": 2
+    },
+    {
+      "id": 42,
+      "clause": "killed(butler, agatha)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        12,
+        17
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {},
+      "depth": 3
+    },
+    {
+      "id": 43,
+      "clause": "~richer(butler, agatha)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        42,
+        4
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {
+        "r:V1": "agatha",
+        "r:V0": "butler"
+      },
+      "depth": 4
+    },
+    {
+      "id": 44,
+      "clause": "~lives(butler) | hates(butler, butler)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        43,
+        11
+      ],
+      "pivots": [
+        0,
+        2
+      ],
+      "substitution": {
+        "r:V0": "butler"
+      },
+      "depth": 5
+    },
+    {
+      "id": 45,
+      "clause": "hates(butler, butler)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        44,
+        2
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 6
+    },
+    {
+      "id": 64,
+      "clause": "~hates(butler, butler)",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        30,
+        28
+      ],
+      "pivots": [
+        1,
+        0
+      ],
+      "substitution": {},
+      "depth": 3
+    },
+    {
+      "id": 70,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        64,
+        45
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 7
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 0.9749,
+    "ocaml_allocated_bytes": 4493648,
+    "input_clauses": 12,
+    "generated_clauses": 97,
+    "kept_clauses": 70,
+    "selected_clauses": 33,
+    "literal_pair_checks": 242,
+    "redundant_clauses": 27,
+    "max_passive": 36,
+    "max_derivation_depth": 7,
+    "proof_steps": 21,
+    "process_wall_ms": 5.4474,
+    "peak_rss_bytes": 5095424
+  },
+  "problem": {
+    "premises": [
+      "( lives(agatha) )",
+      "( lives(butler) )",
+      "( lives(charles) )",
+      "( ~ killed(X,Y) | ~ richer(X,Y) )",
+      "( ~ hates(agatha,X) | ~ hates(charles,X) )",
+      "( ~ hates(X,agatha) | ~ hates(X,butler) | ~ hates(X,charles) )",
+      "( hates(agatha,agatha) )",
+      "( hates(agatha,charles) )",
+      "( ~ killed(X,Y) | hates(X,Y) )",
+      "( ~ hates(agatha,X) | hates(butler,X) )",
+      "( ~ lives(X) | richer(X,agatha) | hates(butler,X) )",
+      "( killed(butler,agatha) | killed(charles,agatha) )"
+    ],
+    "goal": "false",
+    "mode": "optimized",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

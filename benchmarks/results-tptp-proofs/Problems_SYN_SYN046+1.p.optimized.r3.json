@@ -1,0 +1,92 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "optimized",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "~p | q",
+      "rule": "input",
+      "source": "negated_goal:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 2,
+      "clause": "p",
+      "rule": "input",
+      "source": "negated_goal:5",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "~q",
+      "rule": "input",
+      "source": "negated_goal:9",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 4,
+      "clause": "q",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        2,
+        1
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 6,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        4,
+        3
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 2
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 0.0298,
+    "ocaml_allocated_bytes": 64760,
+    "input_clauses": 9,
+    "generated_clauses": 12,
+    "kept_clauses": 6,
+    "selected_clauses": 4,
+    "literal_pair_checks": 3,
+    "redundant_clauses": 6,
+    "max_passive": 3,
+    "max_derivation_depth": 2,
+    "proof_steps": 5,
+    "process_wall_ms": 5.2413,
+    "peak_rss_bytes": 2785280
+  },
+  "problem": {
+    "premises": [],
+    "goal": "( ( p => q ) <=> ( ~ p | q ) )",
+    "mode": "optimized",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}

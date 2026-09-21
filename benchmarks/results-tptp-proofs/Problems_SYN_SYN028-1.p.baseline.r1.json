@@ -1,0 +1,193 @@
+{
+  "status": "proved",
+  "reason": "Derived the empty clause",
+  "mode": "baseline",
+  "proof_checked": true,
+  "proof": [
+    {
+      "id": 1,
+      "clause": "p | q",
+      "rule": "input",
+      "source": "premise_1:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 2,
+      "clause": "~q | r",
+      "rule": "input",
+      "source": "premise_2:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 3,
+      "clause": "~r | s",
+      "rule": "input",
+      "source": "premise_3:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 4,
+      "clause": "~r | ~s | t",
+      "rule": "input",
+      "source": "premise_4:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 5,
+      "clause": "~t | p",
+      "rule": "input",
+      "source": "premise_5:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 6,
+      "clause": "~p",
+      "rule": "input",
+      "source": "premise_6:1",
+      "parents": [],
+      "pivots": [],
+      "substitution": {},
+      "depth": 0
+    },
+    {
+      "id": 7,
+      "clause": "p | r",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        2,
+        1
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 9,
+      "clause": "~r | t",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        4,
+        3
+      ],
+      "pivots": [
+        1,
+        1
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 12,
+      "clause": "~t",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        6,
+        5
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {},
+      "depth": 1
+    },
+    {
+      "id": 14,
+      "clause": "r",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        7,
+        6
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 26,
+      "clause": "~r",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        12,
+        9
+      ],
+      "pivots": [
+        0,
+        1
+      ],
+      "substitution": {},
+      "depth": 2
+    },
+    {
+      "id": 37,
+      "clause": "[]",
+      "rule": "resolution",
+      "source": "",
+      "parents": [
+        26,
+        14
+      ],
+      "pivots": [
+        0,
+        0
+      ],
+      "substitution": {},
+      "depth": 3
+    }
+  ],
+  "metrics": {
+    "elapsed_ms": 0.1979,
+    "ocaml_allocated_bytes": 672344,
+    "input_clauses": 6,
+    "generated_clauses": 96,
+    "kept_clauses": 37,
+    "selected_clauses": 26,
+    "literal_pair_checks": 1494,
+    "redundant_clauses": 59,
+    "max_passive": 16,
+    "max_derivation_depth": 3,
+    "proof_steps": 12,
+    "process_wall_ms": 4.8375,
+    "peak_rss_bytes": 3457024
+  },
+  "problem": {
+    "premises": [
+      "( q | p )",
+      "( ~ q | r )",
+      "( ~ r | s )",
+      "( ~ s | ~ r | t )",
+      "( ~ t | p )",
+      "( ~ p )"
+    ],
+    "goal": "false",
+    "mode": "baseline",
+    "seconds": 2.0,
+    "max_clauses": 5000
+  }
+}
