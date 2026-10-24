@@ -170,6 +170,8 @@ let improved features ~seconds ~max_clauses premises goal =
   with Found id -> "proved","Derived the empty clause",extract id
      | Limit reason -> "unknown",reason,[] in
   let checked=proof<>[] && verify !initial proof in
+  (* Saved v2 runs GEO170+3, GEO187+3, GEO200+3, SYN386+1 fail replay.
+     Keep these as errors; reconstruction does not repair them. *)
   if status="proved" && not checked then failwith "Internal error: proof replay failed";
   {status;reason;proof;checked;stats;seconds=Unix.gettimeofday ()-.started;
    allocated_bytes=Gc.allocated_bytes ()-.allocated_start;input_clauses=List.length !initial}

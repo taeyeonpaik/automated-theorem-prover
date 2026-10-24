@@ -1,7 +1,22 @@
 # QED
 
-An educational OCaml first-order theorem prover.
+A small first-order theorem prover in OCaml, with a JavaScript interface and a Python server. Based on John Harrison’s *Handbook of Practical Logic and Automated Reasoning*.
 
-This Git history is a reconstruction assembled on October 27, 2026 from the completed project and saved development records. Commit dates are an illustrative schedule, not original work dates. Original experimental timestamps are retained.
+Uses resolution and paramodulation, with clause indexing and subsumption to reduce search. Supports a subset of TPTP FOF/CNF and includes benchmark results.
 
-Run `make test` for the capabilities available at this milestone.
+## Run
+
+Requires OCaml 4.13+, Python 3.10+, and make.
+
+```sh
+make
+python3 server.py
+```
+
+Open http://127.0.0.1:8000, load an example, and click **Prove**.
+
+Run tests with `make test`.
+
+This is an educational prover: searches can hit resource limits, and known proof-replay failures remain in the saved evaluation.
+
+[Walkthrough](docs/WALKTHROUGH.md) · [TPTP evaluation](docs/FULL_TPTP_EVALUATION.md)
